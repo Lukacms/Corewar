@@ -1,0 +1,19 @@
+COREWAR/ASM        B2 - Elementary programming in C            Tek1 final project
+
+NAME
+    asm
+
+USAGE
+    ./asm file_name[.s]
+
+DESCRIPTION
+    file_name file in assembly language to be converted into file_name.cor, an executable in the Virtual Machine.
+    It enables you to write programs designed to fight (the champions).
+    It therefore understands the assembly language and generates binary programs that the virtual machine can execute.
+
+EXIT STATUS CODE
+    0 if okay
+    84 in case of error (wrong nb of arguments, invalid parameter, ...)
+
+AUTHORS
+    Luka Camus, Louis Bassagal, Samuel Florentin, Nolann Bougrainville
