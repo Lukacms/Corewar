@@ -8,6 +8,8 @@
 SRC	=	src/asm.c	\
 		src/help/display_help.c	\
 
+SRC_ERRORS	=	src/errors/check_args.c	\
+
 SRC_LEXER	=	src/lexer/lexer.c	\
 
 SRC_PARSER	=	src/parser/parser.c	\
@@ -15,6 +17,7 @@ SRC_PARSER	=	src/parser/parser.c	\
 SRC_COMPILE	=	src/compile/compile.c	\
 
 OBJ	=	$(SRC:.c=.o)
+OBJ	+=	$(SRC_ERRORS:.c=.o)
 OBJ	+=	$(SRC_LEXER:.c=.o)
 OBJ	+=	$(SRC_PARSER:.c=.o)
 OBJ	+=	$(SRC_COMPILE:.c=.o)
@@ -23,7 +26,7 @@ SRC_MAIN	=	src/main.c
 
 OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
-SRC_TESTS	=	../tests/asm/tests_help.c
+SRC_TESTS	=	../tests/asm/tests_args.c
 
 OBJ_TESTS	=	$(SRC_TESTS:.c=.o)
 
