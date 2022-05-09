@@ -33,6 +33,7 @@
     # define DIR_SIZE 4
     # define REG_SIZE DIR_SIZE
 
+    # define PROG_EXTENSION_LENGTH 5
     # define PROG_NAME_LENGTH 128
     # define COMMENT_LENGTH 2048
 

@@ -52,3 +52,6 @@ Mkfile.old
 dkms.conf
 
 .vscode/
+corewar_binaries/
+asm/asm
+corewar/corewar
