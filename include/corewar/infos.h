@@ -10,7 +10,7 @@
 
 /*
 * @brief for structures, ...
-* 
+*
 */
 
 #endif /* !INFOS_H_ */
