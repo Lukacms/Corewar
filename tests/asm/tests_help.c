@@ -32,7 +32,6 @@ Test(display_help, fake_file)
 
 Test(display_help, good_file, .init=redirect_all_std)
 {
-    // display_help(SUCCESS, "../tests/assets/falsehelp.txt");
     cr_assert_eq(display_help(SUCCESS, "../tests/assets/falsehelp.txt"), SUCCESS);
     cr_assert_stdout_eq_str("oui\n");
 }
