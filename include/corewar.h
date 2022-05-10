@@ -11,6 +11,9 @@
     #define SUCCESS 0
     #define FAILURE 84
 
-    int launch(int argc, char * const argv[]);
+    #include "corewar/infos.h"
+    #include "corewar/struct.h"
+
+int launch(int argc, char * const argv[]);
 
 #endif /* !COREWAR_H_ */
