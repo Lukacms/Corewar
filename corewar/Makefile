@@ -5,7 +5,10 @@
 ## Makefile
 ##
 
-SRC	=	src/corewar.c
+SRC	=	src/corewar.c	\
+		src/misc/read_file.c	\
+		src/create_vm/create_vm.c	\
+		src/misc/get_len_of_name.c	\
 
 SRC_ARGS	=
 

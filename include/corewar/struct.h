@@ -32,6 +32,7 @@ typedef struct warrior_s {
 */
 typedef struct warriors_list_s {
     warrior_t *head;
+    u_int id_of_warriors;
     u_int nbr_of_warriors;
 } warriors_list_t;
 
