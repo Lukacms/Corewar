@@ -20,9 +20,9 @@ int launch(int argc, char * const argv[]);
 corewar_t *create_vm(void);
 
 // Open a file and set it in a string
-char *read_file(char *filepath)
+char *read_file(char *filepath);
 
 // Get the length of the name of the warrior
-int get_len_of_name(char *byte_file)
+int get_len_of_name(char *byte_file);
 
 #endif /* !COREWAR_H_ */

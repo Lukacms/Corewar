@@ -31,4 +31,5 @@ char *read_file(char *filepath)
     buff[offset + 1] = '\0';
     if (close(fd) == -1)
         return NULL;
+    return buff;
 }
