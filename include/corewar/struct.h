@@ -10,19 +10,6 @@
 
     #include <sys/types.h>
     #include "corewar/infos.h"
-/*
-* @brief General structure for the Corewar VM
-* @param nbr_cycles The number of cycles
-* @param warrior_list List of all the warriors
-* @param memory The actual memory of the VM
-* @param old_memory The old memory of the VM
-*/
-typedef struct corewar_s {
-    int nbr_cycles;
-    warriors_list_t warrior_list;
-    char memory[MEM_SIZE];
-    char old_memory[MEM_SIZE];
-} corewar_t;
 
 /*
 * @brief A warrior in the VM
@@ -47,5 +34,19 @@ typedef struct warriors_list_s {
     warrior_t *head;
     u_int nbr_of_warriors;
 } warriors_list_t;
+
+/*
+* @brief General structure for the Corewar VM
+* @param nbr_cycles The number of cycles
+* @param warrior_list List of all the warriors
+* @param memory The actual memory of the VM
+* @param old_memory The old memory of the VM
+*/
+typedef struct corewar_s {
+    int nbr_cycles;
+    warriors_list_t warrior_list;
+    char memory[MEM_SIZE];
+    char old_memory[MEM_SIZE];
+} corewar_t;
 
 #endif /* !STRUCT_COREWAR_H_ */

@@ -18,5 +18,7 @@ corewar_t *create_vm(void)
     corewar->warrior_list.head = NULL;
     corewar->warrior_list.nbr_of_warriors = 0;
     corewar->nbr_cycles = 0;
+    my_memset(corewar->memory, MEM_SIZE, '\0');
+    my_memset(corewar->old_memory, MEM_SIZE, '\0');
     return SUCCESS;
 }
