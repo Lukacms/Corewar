@@ -7,18 +7,28 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include "corewar.h"
 
 char *read_file(char *filepath)
 {
-    int fd = open(filepath, O_RDONLY);
+    int fd = 0;
     char *buff = malloc(1);
     int offset = 0;
     int len;
 
+    if (filepath == NULL || buff == NULL)
+        return NULL;
+    fd = open(filepath, O_RDONLY);
+    if (fd == -1)
+        return NULL;
     while ((len = read(fd, buff + offset, 1)) > 0) {
         offset += 1;
         buff = realloc(buff, offset + 1);
+        if (buff == NULL)
+            return NULL;
     }
     buff[offset + 1] = '\0';
-    close(fd);
+    if (close(fd) == -1)
+        return NULL;
 }
