@@ -7,6 +7,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 char *read_file(char *filepath)
 {
@@ -21,4 +22,5 @@ char *read_file(char *filepath)
     }
     buff[offset + 1] = '\0';
     close(fd);
+    return buff;
 }
