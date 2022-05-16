@@ -9,6 +9,7 @@ SRC	=	src/asm.c	\
 		src/help/display_help.c	\
 
 SRC_ERRORS	=	src/errors/check_args.c	\
+		src/errors/print_error.c
 
 SRC_LEXER	=	src/lexer/lexer.c	\
 		src/lexer/name_comments.c	\

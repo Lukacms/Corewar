@@ -18,6 +18,9 @@
     #define LEXER_ERR_SPACE "lexer error on line: %d; \
 instructions not separated correctly.\n"
     #define LEXER_ERR_HEADER "lexer error on line: %d; wrong header\n"
+    #define LEXER_LOAD_ERR "lexer error on line: %d; file couldn't be load\n"
+    #define LEXER_FILE_ERR "lexer error on line: %d; file doesn't have \
+enough instructions\n"
 
 // error parser
     #define PARSER_ERR_INST "parser error on line: %d; invalid instruction\n"

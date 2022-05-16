@@ -35,5 +35,6 @@ char *get_output_filename(char *input_filename);
 char *get_output_filename_no_ext(char *output_filename);
 
 int check_args(char * const argv[]);
+int print_error(char *str, int i, int status);
 
 #endif /* !ASM_H_ */
