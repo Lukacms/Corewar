@@ -10,4 +10,6 @@
 
     #include "redcode/infos.h"
 
+int compile(infos_t *infos);
+
 #endif /* !COMPIL_H_ */

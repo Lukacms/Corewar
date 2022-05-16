@@ -19,19 +19,21 @@
     #define HELP_ASM "assets/asm_help.txt"
     #define SUCCESS 0
     #define FAILURE 84
+    #define FAILURE_LEX -1
+    #define SUCCESS_LEX 2
 
-    /* Headers functions */
+int launch(int argc, char * const argv[]);
 
-    int create_header(FILE *fp, char *output_filename);
-    char *fill_header(int size, int magic);
+/* Headers functions */
 
-    /* Filename management */
+int create_header(FILE *fp, char *output_filename);
+char *fill_header(int size, int magic);
 
-    char *get_output_filename(char *input_filename);
-    char *get_output_filename_no_ext(char *output_filename);
+/* Filename management */
 
-    int check_args(char * const argv[]);
+char *get_output_filename(char *input_filename);
+char *get_output_filename_no_ext(char *output_filename);
 
-    int launch(int argc, char * const argv[]);
+int check_args(char * const argv[]);
 
 #endif /* !ASM_H_ */
