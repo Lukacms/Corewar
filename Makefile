@@ -1,6 +1,6 @@
 ##
-## EPITECH PROJECT, 2021
-## B-PSU-100-BDX-1-1-bsmyls-chloe.camus
+## EPITECH PROJECT, 2022
+## Corewar
 ## File description:
 ## Makefile
 ##
