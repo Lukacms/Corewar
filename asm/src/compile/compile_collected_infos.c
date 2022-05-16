@@ -1,13 +1,14 @@
 /*
 ** EPITECH PROJECT, 2022
-** corewar
+** Corewar
 ** File description:
-** parser
+** compile_collected_infos
 */
 
+#include <stdlib.h>
 #include "redcode.h"
 
-int parser(infos_t *infos)
+int compile(infos_t *infos)
 {
     if (!infos)
         return FAILURE;

@@ -6,6 +6,7 @@
 */
 
 #include "redcode.h"
+#include "my.h"
 
 char *get_output_filename(char *input_filename)
 {
@@ -39,22 +40,28 @@ char *get_output_filename_no_ext(char *output_filename)
     return filename_no_ext;
 }
 
+static int analyse_file(infos_t *infos)
+{
+    if (lexer(infos) != SUCCESS)
+        return FAILURE;
+    if (parser(infos) != SUCCESS)
+        return FAILURE;
+    return compile(infos);
+}
+
 int launch(int argc, char * const argv[])
 {
-    FILE *fp = NULL;
-    char *output_filename = NULL;
+    infos_t infos = {0};
 
     if (!argv || argc != 2 || check_args(argv))
         return FAILURE;
-    if (!my_strcmp(argv[1], "-h") && !argv[2])
+    if (my_strcmp(argv[1], "-h") == SUCCESS && !argv[2])
         return display_help(SUCCESS, HELP_ASM);
-    output_filename = get_output_filename(argv[1]);
-    if (!output_filename)
+    infos.input_name = my_strdup(argv[1]);
+    if (!(infos.output_filename = get_output_filename(infos.input_name)))
         return FAILURE;
-    fp = fopen (output_filename, "w");
-    if (!fp)
+    if (!(infos.fd = fopen(infos.output_filename, "w")))
         return FAILURE;
-    create_header(fp, output_filename);
-    fclose(fp);
-    return SUCCESS;
+    create_header(infos.fd, infos.output_filename);
+    return analyse_file(&infos);
 }

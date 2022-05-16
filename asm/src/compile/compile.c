@@ -59,4 +59,3 @@ int create_header(FILE *fp, char *output_filename)
     free(output_filename);
     return SUCCESS;
 }
-
