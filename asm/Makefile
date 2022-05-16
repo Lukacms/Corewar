@@ -15,6 +15,8 @@ SRC_LEXER	=	src/lexer/lexer.c	\
 		src/lexer/array_size.c	\
 
 SRC_PARSER	=	src/parser/parser.c	\
+		src/parser/add_opnode.c	\
+		src/parser/infos_in_opnode.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
 		src/compile/compile_collected_infos.c	\

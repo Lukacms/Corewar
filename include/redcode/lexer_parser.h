@@ -35,6 +35,8 @@ int get_basics(infos_t *infos, basics_t *bases);
 
 // parser
 int parser(infos_t *infos);
+int add_opnode(infos_t *infos, char *line);
+int infos_in_opnode(infos_t *infos, char *line, opnode_t *node);
 
 // more generic functions
 int array_size(char **array);
