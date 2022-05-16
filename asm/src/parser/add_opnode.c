@@ -1,15 +1,16 @@
 /*
 ** EPITECH PROJECT, 2022
-** corewar
+** Corewar
 ** File description:
-** parser
+** add_cmd_node
 */
 
+#include <stdlib.h>
 #include "redcode.h"
 
-int parser(infos_t *infos)
+int add_opnode(infos_t *infos, char *line)
 {
-    if (!infos || !infos->file)
+    if (!infos || !line)
         return FAILURE;
     return SUCCESS;
 }
