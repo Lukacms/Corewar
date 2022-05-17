@@ -20,6 +20,7 @@
 typedef struct warrior_s {
     char *name;
     int id;
+    int reg[REG_NUMBER];
     u_int *instruction_address;
     struct warrior_s *next;
     struct warrior_s *prev;
@@ -48,7 +49,6 @@ typedef struct corewar_s {
     int nbr_cycles;
     int dump;
     warriors_list_t warrior_list;
-    int reg[REG_NUMBER][REG_SIZE];
     int dump_cycles;
     char memory[MEM_SIZE];
     char old_memory[MEM_SIZE];
