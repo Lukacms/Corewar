@@ -13,7 +13,7 @@ SRC_ERRORS	=	src/errors/check_args.c	\
 				src/errors/check_in_file.c	\
 
 SRC_LEXER	=	src/lexer/lexer.c	\
-		src/lexer/array_size.c	\
+				src/lexer/array_size.c	\
 
 SRC_PARSER	=	src/parser/parser.c	\
 		src/parser/add_opnode.c	\

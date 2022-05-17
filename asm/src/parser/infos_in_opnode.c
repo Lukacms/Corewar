@@ -35,25 +35,39 @@ static const op_t op[] = {
     {0}
 };
 
-static int check_opargs(char **line, opnode_t *node, int i, int y)
+static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
 {
-    int size = array_size(line);
+    int size = array_size(temp_instruction);
+    char **move_array = temp_instruction + 1;
 
-    if (size != op[i].nbr_args + 1)
+    if (size != op[i].nbr_args + 1) {
+        free_array((void **)temp_instruction);
         return print_error(PARSER_ERR_NBARG, y, FAILURE);
-    if (!(node->args = dup_array(line + 1)))
+    }
+    if (!(node->args = dup_array(temp_instruction + 1))) {
+        free_array((void **)temp_instruction);
         return print_error(PARSER_ERR_DUP, y, FAILURE);
+    }
     node->type = op[i].cmd;
     node->cycle = op[i].nbr_cycles;
+    free_array((void **)temp_instruction);
     return SUCCESS;
 }
 
 static int get_optype(opnode_t *node, char **line, int y)
 {
+    char **temp_instruction = NULL;
+
+    if (!node || !line || !(*line))
+        return FAILURE;
+    temp_instruction = str_to_array_choice(line[0], " ");
+    if (!temp_instruction)
+        return FAILURE;
     for (unsigned int i = 0; op[i].mnemonique; i += 1) {
-        if (my_strcmp(op[i].mnemonique, line[0]) == SUCCESS)
-            return check_opargs(line, node, i, y);
+        if (my_strcmp(op[i].mnemonique, temp_instruction[0]) == SUCCESS)
+            return check_opargs(temp_instruction, node, i, y);
     }
+    free_array((void **)temp_instruction);
     return print_error(PARSER_ERR_INST, y, FAILURE);
 }
 
@@ -77,7 +91,7 @@ int infos_in_opnode(char *line, opnode_t *node, int y)
         return print_error(PARSER_ERR_DUP, y, FAILURE);
     if ((index = is_name(arr[0])))
         node->fun_name = my_strdup(arr[0]);
-    if (get_optype(node, arr + index, y) != SUCCESS)
+    if (!index && get_optype(node, arr + index, y) != SUCCESS)
         return FAILURE;
     free_array((void **)arr);
     return SUCCESS;

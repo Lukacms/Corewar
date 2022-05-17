@@ -27,7 +27,7 @@ enough instructions\n"
     #define PARSER_ERR_NBARG "parser error on line: %d, wrong nb of arguments\n"
     #define PARSER_ERR_DUP "parser error on line: %d; program failure\n"
 
-    #define SEPARATOR "\t "
+    #define SEPARATOR "\t"
     #define NAME ".name"
     #define COMMENT ".comment"
 

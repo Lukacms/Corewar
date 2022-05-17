@@ -8,20 +8,31 @@
 #include <stdlib.h>
 #include "my.h"
 
+static int array_len(char **array)
+{
+    int i = 0;
+
+    for (; array[i]; i++);
+    return i;
+}
+
 char **dup_array(char **origin)
 {
-    char **dest = NULL;
+    char **new_array = NULL;
     int i = 0;
+    int len = array_len(origin);
 
     if (!origin)
         return NULL;
-    for (; origin[i]; i++);
-    if (!(dest = malloc(sizeof(char *) * (i + 1))))
+    new_array = malloc(sizeof(char *) * (len + 1));
+    if (!new_array)
         return NULL;
-    for (int y = 0; y < i; y++) {
-        if (!(dest[y] = my_strdup(origin[y])))
-            return NULL;
+    for (; i < len; i++) {
+        if (origin[i])
+            new_array[i] = origin[i];
+        else
+            new_array[i] = NULL;
     }
-    dest[i] = NULL;
-    return dest;
+    new_array[i] = NULL;
+    return new_array;
 }
