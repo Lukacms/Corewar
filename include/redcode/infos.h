@@ -26,7 +26,7 @@
     #define REG_NUMBER 16 // r1 <--> rx
 
     #define T_REG 1 // register
-    #define T_DIR 2 // direct (ld #1,r1 put 1 into r1)
+    #define T_DIR 2 // direct (ld %1,r1 put 1 into r1)
     #define T_IND 4 // see op.h
     #define T_LAB 8 // LABEL
 
@@ -50,6 +50,7 @@ typedef struct header_s {
 typedef char code_t;
 typedef char name_t;
 typedef char comment_t;
+typedef char label_t;
 
 typedef enum opcode_s {
     LIVE = 1,
@@ -79,6 +80,11 @@ typedef struct op_s {
     int nbr_cycles;
     char *comment;
 } op_t;
+
+typedef struct args_s {
+    name_t *arg;
+    label_t type;
+} args_t;
 
 typedef struct opnode_s {
     opcode_t type;

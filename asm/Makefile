@@ -13,7 +13,6 @@ SRC_ERRORS	=	src/errors/check_args.c	\
 				src/errors/check_in_file.c	\
 
 SRC_LEXER	=	src/lexer/lexer.c	\
-		src/lexer/name_comments.c	\
 		src/lexer/array_size.c	\
 
 SRC_PARSER	=	src/parser/parser.c	\

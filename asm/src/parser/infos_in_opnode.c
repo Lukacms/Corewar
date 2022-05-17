@@ -75,7 +75,7 @@ int infos_in_opnode(char *line, opnode_t *node, int y)
         return FAILURE;
     if (!(arr = str_to_array_choice(line, SEPARATOR)))
         return print_error(PARSER_ERR_DUP, y, FAILURE);
-    if ((index = is_name(arr[0])) > 0)
+    if ((index = is_name(arr[0])))
         node->fun_name = my_strdup(arr[0]);
     if (get_optype(node, arr + index, y) != SUCCESS)
         return FAILURE;
