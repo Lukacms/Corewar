@@ -6,10 +6,12 @@
 ##
 
 SRC	=	src/corewar.c	\
-		src/misc/read_file.c	\
-		src/misc/get_len_of_name.c	\
-		src/create_vm/create_vm.c	\
 		src/lexing/lexer.c	\
+		src/misc/read_file.c	\
+		src/create_vm/create_vm.c	\
+		src/misc/get_len_of_name.c	\
+		src/create_vm/create_warrior.c	\
+		src/warriors/generate_warriors.c	\
 		src/argument_handling/check_opt.c	\
 		src/argument_handling/arg_handling.c	\
 

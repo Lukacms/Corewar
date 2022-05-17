@@ -17,14 +17,13 @@ static int check_extension(char * const filename)
     if (filename == NULL)
         return FAILURE;
     cpy = my_strdup(filename);
-    for (int i = 0; cpy[i] != '\0'; i++) {
+    for (int i = 0; cpy[0] != '\0'; i++) {
         cpy++;
-        if (cpy[i] == '.')
+        if (cpy[0] == '.')
             break;
     }
     if (my_strcmp(cpy, ".cor") != 0)
         return FAILURE;
-    free(cpy);
     cpy = NULL;
     return SUCCESS;
 }
@@ -41,12 +40,13 @@ static int check_magic_nb(char * const filename)
     str = read_file(filename);
     if (str == NULL)
         return FAILURE;
-    for (int a = 0; a <= 24; a += 8) {
-        nb |= (tmp | (unsigned char){str[i]}) << a;
+    for (int a = 24; i < 4; a -= 8) {
+        tmp |=  (unsigned char){str[i]} << a;
+        nb |= tmp;
         tmp = 0;
         i++;
     }
-    if (nb != 15369203)
+    if (nb != COREWAR_EXEC_MAGIC)
         return FAILURE;
     return SUCCESS;
 }

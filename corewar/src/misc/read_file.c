@@ -15,7 +15,7 @@ char *read_file(char *filepath)
     int fd = 0;
     char *buff = malloc(1);
     int offset = 0;
-    int len;
+    int len = 0;
 
     if (filepath == NULL || buff == NULL)
         return NULL;

@@ -34,8 +34,10 @@ static int check_warrior(char * const argv[], int *i, corewar_t *corewar,
 {
     if (!argv || !argv[*i] || !is_cmd)
         return FAILURE;
-    if (argv[*i][0] == '-')
+    if (argv[*i][0] == '-' || my_getnbr(argv[*i]) != 0) {
+        *is_cmd = true;
         return SUCCESS;
+    }
     if (lexer_vm(argv[*i]) == FAILURE)
         return FAILURE;
     return SUCCESS;
@@ -45,15 +47,15 @@ int check_opt(char * const argv[], int *i, corewar_t *corewar)
 {
     bool is_cmd = false;
 
-    if (argv == NULL || argv[*i] == NULL || argv[*i + 1] == NULL)
+    if (argv == NULL || argv[*i] == NULL)
         return FAILURE;
-    if (argv[*i][0] != '-')
+    if (argv[*i][0] != '-' && argv[*i][0] != '.')
         return SUCCESS;
-    if (check_dump_nb(argv, i, corewar, &is_cmd) == FAILURE)
+    if (check_dump_nb(argv, i, corewar, &is_cmd) == FAILURE && argv[*i][0] == '-')
         return FAILURE;
     if (check_warrior(argv, i, corewar, &is_cmd) == FAILURE)
         return FAILURE;
-    if (is_cmd == false)
-        return FAILURE;
+/*    if (is_cmd == false)
+        return FAILURE;*/
     return SUCCESS;
 }

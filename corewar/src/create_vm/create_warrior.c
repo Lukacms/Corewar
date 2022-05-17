@@ -5,12 +5,28 @@
 ** create_warrior
 */
 
+#include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
 
 static const u_int magic_nbr_len = 4;
 
-static int give_warrior_dna(warrior_t *warrior, warriors_list_t *warriors_list,
+static int give_id_and_adress(warrior_t *warrior, corewar_t *corewar)
+{
+    if (corewar->params->a_parameter)
+        warrior->instruction_address =
+        (u_int){my_getnbr(corewar->params->a_parameter)};
+    if (corewar->params->n_parameter)
+        warrior->id = (u_int){my_getnbr(corewar->params->n_parameter)};
+    if (!corewar->params->n_parameter)
+        warrior->id = corewar->warrior_list.id_of_warriors;
+    if (!corewar->params->a_parameter)
+        warrior->instruction_address = (u_int){MEM_SIZE /
+        (corewar->warrior_list.nbr_of_warriors + 1)};
+    return SUCCESS;
+}
+
+static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
                             char *byte_file)
 {
     char *warrior_code = {0};
@@ -24,10 +40,9 @@ static int give_warrior_dna(warrior_t *warrior, warriors_list_t *warriors_list,
     warrior_code += magic_nbr_len;
     len_name = get_len_of_name(warrior_code);
     warrior->name = malloc(sizeof(char) * (len_name + 1));
-    my_strncpy(warrior->name, byte_file, len_name);
+    my_strncpy(warrior->name, warrior_code, len_name);
     warrior->name[len_name] = '\0';
-    warrior->id = warriors_list->id_of_warriors;
-    warriors_list->id_of_warriors += 1;
+    give_id_and_adress(warrior, corewar);
     return SUCCESS;
 }
 
@@ -36,12 +51,13 @@ int create_warrior(corewar_t *corewar, char *byte_file)
     warrior_t *warrior = malloc(sizeof(warrior_t));
 
     if (!warrior || give_warrior_dna(warrior,
-        &corewar->warrior_list, byte_file) != SUCCESS)
+        corewar, byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;
     if (!corewar->warrior_list.head) {
         warrior->next = warrior;
         warrior->prev = warrior;
+        corewar->warrior_list.head = warrior;
         return SUCCESS;
     }
     corewar->warrior_list.head->prev->next = warrior;
