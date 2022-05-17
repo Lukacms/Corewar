@@ -44,9 +44,5 @@ int generate_warriors(corewar_t *corewar, int argc, char * const argv[])
         tmp += 1;
         counter += 1;
     }
-    warrior_t *tmp2 = corewar->warrior_list.head;
-    for (int i = 0; i < corewar->warrior_list.nbr_of_warriors; tmp2 = tmp2->next, i += 1) {
-        my_printf("ID = %d, Address = %d Name = %s\n", tmp2->id, tmp2->instruction_address, tmp2->name);
-    }
     return SUCCESS;
 }
