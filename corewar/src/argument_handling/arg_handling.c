@@ -14,7 +14,7 @@ int arg_handling(int argc, char * const argv[], corewar_t *corewar)
 {
     if (argv == NULL || argc < 2)
         return FAILURE;
-    for (int i = 0; i < argc; i++) {
+    for (int i = 1; i < argc; i++) {
         if (argv[i] == NULL)
             return FAILURE;
         if (check_opt(argv, &i, corewar) != SUCCESS)
