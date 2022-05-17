@@ -11,7 +11,7 @@ int launch(int argc, char * const argv[])
 {
     corewar_t *corewar = create_vm();
 
-    if (!corewar)
+    if (!corewar || arg_handling(argc, argv, corewar) != SUCCESS)
         return FAILURE;
     return SUCCESS;
 }

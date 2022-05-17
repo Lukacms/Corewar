@@ -25,4 +25,9 @@ char *read_file(char *filepath);
 // Get the length of the name of the warrior
 int get_len_of_name(char *byte_file);
 
+int check_opt(char * const argv[], int *i, corewar_t *corewar);
+
+int arg_handling(int argc, char * const argv[], corewar_t *corewar);
+
+int lexer_vm(char * const filename);
 #endif /* !COREWAR_H_ */
