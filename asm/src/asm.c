@@ -62,6 +62,5 @@ int launch(int argc, char * const argv[])
         return FAILURE;
     if (!(infos.fd = fopen(infos.output_filename, "w")))
         return FAILURE;
-    create_header(infos.fd, infos.output_filename);
     return analyse_file(&infos);
 }

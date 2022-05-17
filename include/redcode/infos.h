@@ -40,6 +40,13 @@
 
     #define COREWAR_EXEC_MAGIC 0xea83f3 //magic ^^
 
+typedef struct header_s {
+   int  magic;
+   char prog_name[PROG_NAME_LENGTH + 1];
+   int  prog_size;
+   char comment[COMMENT_LENGTH + 1];
+} header_t;
+
 typedef char code_t;
 typedef char name_t;
 typedef char comment_t;

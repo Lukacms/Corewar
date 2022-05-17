@@ -56,3 +56,6 @@ corewar_binaries/
 asm/asm
 corewar/corewar
 champions
+
+*.s
+*.cor

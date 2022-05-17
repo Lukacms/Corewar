@@ -9,7 +9,8 @@ SRC	=	src/asm.c	\
 		src/help/display_help.c	\
 
 SRC_ERRORS	=	src/errors/check_args.c	\
-		src/errors/print_error.c
+				src/errors/print_error.c	\
+				src/errors/check_in_file.c	\
 
 SRC_LEXER	=	src/lexer/lexer.c	\
 		src/lexer/name_comments.c	\
@@ -20,19 +21,27 @@ SRC_PARSER	=	src/parser/parser.c	\
 		src/parser/infos_in_opnode.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
-		src/compile/compile_collected_infos.c	\
+				src/compile/compile_collected_infos.c	\
+				src/compile/create_header.c	\
+
+SRC_UTILS	=	src/utils/my_strcmp_insensitive.c	\
+				src/utils/load_file.c	\
+				src/utils/str_sep_to_array.c	\
+				src/utils/reverse_int_bytes.c	\
 
 OBJ	=	$(SRC:.c=.o)
 OBJ	+=	$(SRC_ERRORS:.c=.o)
 OBJ	+=	$(SRC_LEXER:.c=.o)
 OBJ	+=	$(SRC_PARSER:.c=.o)
 OBJ	+=	$(SRC_COMPILE:.c=.o)
+OBJ	+=	$(SRC_UTILS:.c=.o)
 
 SRC_MAIN	=	src/main.c
 
 OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
-SRC_TESTS	=	../tests/asm/tests_args.c
+SRC_TESTS	=	../tests/asm/tests_args.c	\
+				../tests/asm/tests_files.c
 
 OBJ_TESTS	=	$(SRC_TESTS:.c=.o)
 
