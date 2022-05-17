@@ -39,12 +39,14 @@ typedef struct warriors_list_s {
 /*
 * @brief General structure for the Corewar VM
 * @param nbr_cycles The number of cycles
+* @param nbr_of_cycle in order to dump memory
 * @param warrior_list List of all the warriors
 * @param memory The actual memory of the VM
 * @param old_memory The old memory of the VM
 */
 typedef struct corewar_s {
     int nbr_cycles;
+    int dump;
     warriors_list_t warrior_list;
     char memory[MEM_SIZE];
     char old_memory[MEM_SIZE];
