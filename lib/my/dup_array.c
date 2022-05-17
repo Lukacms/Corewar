@@ -16,12 +16,10 @@ char **dup_array(char **origin)
     if (!origin)
         return NULL;
     for (; origin[i]; i++);
-    dest = malloc(sizeof(char *) * (i + 1));
-    if (!dest)
+    if (!(dest = malloc(sizeof(char *) * (i + 1))))
         return NULL;
     for (int y = 0; y < i; y++) {
-        dest[i] = my_strdup(origin[i]);
-        if (!dest[i])
+        if (!(dest[y] = my_strdup(origin[y])))
             return NULL;
     }
     dest[i] = NULL;
