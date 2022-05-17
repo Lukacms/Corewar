@@ -30,4 +30,9 @@ int check_opt(char * const argv[], int *i, corewar_t *corewar);
 int arg_handling(int argc, char * const argv[], corewar_t *corewar);
 
 int lexer_vm(char * const filename);
+
+int create_warrior(corewar_t *corewar, char *byte_file);
+
+int generate_warriors(corewar_t *corewar, int argc, char * const argv[]);
+
 #endif /* !COREWAR_H_ */
