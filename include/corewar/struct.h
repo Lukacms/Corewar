@@ -46,6 +46,8 @@ typedef struct warriors_list_s {
 typedef struct corewar_s {
     int nbr_cycles;
     warriors_list_t warrior_list;
+    int reg[REG_NUMBER][REG_SIZE];
+    int dump_cycles;
     char memory[MEM_SIZE];
     char old_memory[MEM_SIZE];
 } corewar_t;

@@ -1,14 +1,17 @@
 ##
 ## EPITECH PROJECT, 2022
-## tetris
+## Corewar
 ## File description:
 ## Makefile
 ##
 
 SRC	=	src/corewar.c	\
 		src/misc/read_file.c	\
-		src/create_vm/create_vm.c	\
 		src/misc/get_len_of_name.c	\
+		src/create_vm/create_vm.c	\
+		src/lexing/lexer.c	\
+		src/argument_handling/check_opt.c	\
+		src/argument_handling/arg_handling.c	\
 
 SRC_ARGS	=
 
