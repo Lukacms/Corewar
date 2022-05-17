@@ -35,9 +35,50 @@ static const op_t op[] = {
     {0}
 };
 
-int infos_in_opnode(infos_t *infos, char *line, opnode_t *node)
+static int check_opargs(char **line, opnode_t *node, int i, int y)
 {
-    if (!infos || !line || !node)
+    int size = array_size(line);
+
+    if (size != op[i].nbr_args + 1)
+        return print_error(PARSER_ERR_NBARG, y, FAILURE);
+    if (!(node->args = dup_array(line + 1)))
+        return print_error(PARSER_ERR_DUP, y, FAILURE);
+    node->type = op[i].cmd;
+    node->cycle = op[i].nbr_cycles;
+    return SUCCESS;
+}
+
+static int get_optype(opnode_t *node, char **line, int y)
+{
+    for (unsigned int i = 0; op[i].mnemonique; i += 1) {
+        if (my_strcmp(op[i].mnemonique, line[0]) == SUCCESS)
+            return check_opargs(line, node, i, y);
+    }
+    return print_error(PARSER_ERR_INST, y, FAILURE);
+}
+
+static int is_name(char *poss_name)
+{
+    int size = my_strlen(poss_name) - 1;
+
+    if (poss_name[size] == LABEL_CHAR)
+        return 1;
+    return 0;
+}
+
+int infos_in_opnode(char *line, opnode_t *node, int y)
+{
+    char **arr = NULL;
+    int index = 0;
+
+    if (!line || !node || y < 0)
         return FAILURE;
+    if (!(arr = str_to_array_choice(line, SEPARATOR)))
+        return print_error(PARSER_ERR_DUP, y, FAILURE);
+    if ((index = is_name(arr[0])) > 0)
+        node->fun_name = my_strdup(arr[0]);
+    if (get_optype(node, arr + index, y) != SUCCESS)
+        return FAILURE;
+    free_array((void **)arr);
     return SUCCESS;
 }

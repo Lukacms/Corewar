@@ -8,9 +8,36 @@
 #include <stdlib.h>
 #include "redcode.h"
 
-int add_opnode(infos_t *infos, char *line)
+static void init_node(opnode_t *node)
 {
-    if (!infos || !line)
+    node->args = NULL;
+    node->type = NOTHING;
+    node->prev = node;
+    node->next = node;
+}
+
+static void put_node_in_list(opnode_t *node, infos_t *infos)
+{
+    if (!infos->head)
+        infos->head = node;
+    else {
+        node->prev = infos->head->prev;
+        node->next = infos->head;
+        infos->head->prev->next = node;
+        infos->head->prev = node;
+    }
+    infos->size += 1;
+}
+
+int add_opnode(infos_t *infos, char *line, int y)
+{
+    opnode_t *node = NULL;
+
+    if (!infos || !line || !(node = malloc(sizeof(opnode_t))))
         return FAILURE;
+    init_node(node);
+    if (infos_in_opnode(line, node, y) != SUCCESS)
+        return FAILURE;
+    put_node_in_list(node, infos);
     return SUCCESS;
 }

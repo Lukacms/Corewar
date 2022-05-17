@@ -21,8 +21,8 @@ static int check_cmd(char *line)
     int j = 0;
 
     for (int i = 0; line[i]; i += 1) {
-        for (; !is_delim(line[i]); i++);
-        for (j = 0; is_delim(line[i + j]); j++);
+        for (; line[i] && !is_delim(line[i]); i++);
+        for (j = 0; line[i] && is_delim(line[i + j]); j++);
         if (j > 1)
             return FAILURE;
     }

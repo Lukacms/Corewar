@@ -57,9 +57,9 @@ int get_basics(infos_t *infos, basics_t *bases)
         return FAILURE_LEX;
     if ((size = array_size(infos->file)) < 2)
         return print_error(LEXER_FILE_ERR, 0, FAILURE_LEX);
-    if (get_name(bases, infos->file[0]) != SUCCESS)
-        return print_error(LEXER_ERR_HEADER, 1, FAILURE_LEX);
-    if (get_comment(bases, infos->file[1]) != SUCCESS)
-        return print_error(LEXER_ERR_HEADER, 2, FAILURE_LEX);
+    // if (get_name(bases, infos->file[0]) != SUCCESS)
+    //     return print_error(LEXER_ERR_HEADER, 1, FAILURE_LEX);
+    // if (get_comment(bases, infos->file[1]) != SUCCESS)
+    //     return print_error(LEXER_ERR_HEADER, 2, FAILURE_LEX);
     return SUCCESS_LEX;
 }

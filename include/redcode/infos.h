@@ -76,6 +76,8 @@ typedef struct op_s {
 typedef struct opnode_s {
     opcode_t type;
     char **args;
+    char *fun_name;
+    char cycle;
     struct opnode_s *prev;
     struct opnode_s *next;
 } opnode_t;
