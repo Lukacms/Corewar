@@ -17,6 +17,7 @@
     #define LABEL_CHAR ':'
     #define DIRECT_CHAR '%'
     #define SEPARATOR_CHAR ','
+    #define REG_CHAR 'r' // after, getnbr from 1 to 16
 
     #define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
 
@@ -115,11 +116,11 @@ typedef struct infos_s {
     unsigned int size;
 } infos_t;
 
-typedef int (*type_handler)(char *param, args_t *node);
+typedef int (*type_handler_t)(char *param, args_t *node);
 
 typedef struct param_type_s {
     code_t type;
-    type_handler handler;
-} param_type_s;
+    type_handler_t handler;
+} param_type_t;
 
 #endif /* !INFOS_H_ */
