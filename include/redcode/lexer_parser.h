@@ -8,6 +8,7 @@
 #ifndef LEXER_PARSER_H_
     #define LEXER_PARSER_H_
 
+    #include <sys/types.h>
     #include "redcode/infos.h"
 
     #define HELP "-h"
@@ -26,6 +27,8 @@ enough instructions\n"
     #define PARSER_ERR_INST "parser error on line: %d; invalid instruction\n"
     #define PARSER_ERR_NBARG "parser error on line: %d, wrong nb of arguments\n"
     #define PARSER_ERR_DUP "parser error on line: %d; program failure\n"
+    #define PARSER_ERR_MALLOC "parser error; malloc failure\n"
+    #define PARSER_ERR_POINTER "parser error; invalid pointer\n"
 
     #define SEPARATOR "\t"
     #define NAME ".name"
@@ -41,6 +44,9 @@ int get_basics(infos_t *infos, basics_t *bases);
 int parser(infos_t *infos);
 int add_opnode(infos_t *infos, char *line, int y);
 int infos_in_opnode(char *line, opnode_t *node, int y);
+int add_param_node(opnode_t *opnode, op_t op, char *args, u_int i);
+int get_params(opnode_t *opnode, op_t op, char **args);
+int param_infos(args_t *node, op_t op, char *arg, u_int i);
 
 // more generic functions
 int array_size(char **array);

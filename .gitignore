@@ -51,11 +51,11 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# specific to project
 .vscode/
 corewar_binaries/
 asm/asm
 corewar/corewar
 champions
-
 *.s
 *.cor

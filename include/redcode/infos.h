@@ -41,16 +41,17 @@
     #define COREWAR_EXEC_MAGIC 0xea83f3 //magic ^^
 
 typedef struct header_s {
-   int  magic;
-   char prog_name[PROG_NAME_LENGTH + 1];
-   int  prog_size;
-   char comment[COMMENT_LENGTH + 1];
+    int  magic;
+    char prog_name[PROG_NAME_LENGTH + 1];
+    int  prog_size;
+    char comment[COMMENT_LENGTH + 1];
 } header_t;
 
 typedef char code_t;
 typedef char name_t;
 typedef char comment_t;
 typedef char label_t;
+typedef unsigned char nb_t;
 
 typedef enum opcode_s {
     LIVE = 1,
@@ -74,7 +75,7 @@ typedef enum opcode_s {
 
 typedef struct op_s {
     char *mnemonique;
-    char nbr_args;
+    nb_t nbr_args;
     code_t type[MAX_ARGS_NUMBER];
     opcode_t cmd;
     int nbr_cycles;
@@ -82,13 +83,16 @@ typedef struct op_s {
 } op_t;
 
 typedef struct args_s {
-    name_t *arg;
+    char *arg;
     label_t type;
+    struct args_s *prev;
+    struct args_s *next;
 } args_t;
 
 typedef struct opnode_s {
     opcode_t type;
-    char **args;
+    args_t *head;
+    unsigned char size;
     char *fun_name;
     char cycle;
     struct opnode_s *prev;
@@ -110,5 +114,12 @@ typedef struct infos_s {
     opnode_t *head;
     unsigned int size;
 } infos_t;
+
+typedef int (*type_handler)(char *param, args_t *node);
+
+typedef struct param_type_s {
+    code_t type;
+    type_handler handler;
+} param_type_s;
 
 #endif /* !INFOS_H_ */

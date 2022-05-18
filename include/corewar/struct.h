@@ -65,5 +65,4 @@ typedef struct corewar_s {
     char old_memory[MEM_SIZE];
 } corewar_t;
 
-
 #endif /* !STRUCT_COREWAR_H_ */
