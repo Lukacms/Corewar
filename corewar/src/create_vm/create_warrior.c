@@ -40,6 +40,8 @@ static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
         return FAILURE;
     warrior_code = read_file(byte_file);
     warrior->reg = malloc(sizeof(int) * REG_NUMBER);
+    warrior->filename = my_strdup(byte_file);
+    warrior->size = get_size_of_file(warrior->filename);
     if (!warrior_code || !warrior->reg)
         return FAILURE;
     warrior->save = warrior_code;
@@ -59,7 +61,7 @@ int create_warrior(corewar_t *corewar, char *byte_file)
 
     warrior->reg = malloc(sizeof(int) * (REG_NUMBER));
     warrior->carry = 0;
-    if (!warrior || warrior->reg ||give_warrior_dna(warrior,
+    if (!warrior || !warrior->reg ||give_warrior_dna(warrior,
         corewar, byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;

@@ -35,4 +35,8 @@ int create_warrior(corewar_t *corewar, char *byte_file);
 
 int generate_warriors(corewar_t *corewar, int argc, char * const argv[]);
 
+int set_warriors_in_mem_loop(corewar_t *corewar);
+
+int get_size_of_file(char * const filename);
+
 #endif /* !COREWAR_H_ */

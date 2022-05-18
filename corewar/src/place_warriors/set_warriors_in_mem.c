@@ -9,15 +9,17 @@
 
 static int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior)
 {
-    char character = 0;
+    int count = (4 + 128 + 2024);
+    char character = '0';
     int i = 0;
     int index = 0;
 
-    while (character != '\0') {
+    while (count < warrior->size) {
         character = warrior->warrior_code[i];
         index = (warrior->instruction_address + i) % MEM_SIZE;
         corewar->memory[index] = character;
         i += 1;
+        count  += 1;
     }
     return SUCCESS;
 }
@@ -33,6 +35,10 @@ int set_warriors_in_mem_loop(corewar_t *corewar)
         set_warriors_in_mem(corewar, tmp);
         tmp = tmp->next;
     }
-    my_printf("MEM = %s\n", corewar->memory);
+    int i = 0;
+    while (i < MEM_SIZE) {
+        my_printf("%c", corewar->memory[i]);
+        i += 1;
+    }
     return SUCCESS;
 }
