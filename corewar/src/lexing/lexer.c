@@ -5,28 +5,11 @@
 ** lexer
 */
 
+#include <unistd.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
-
-static int check_extension(char * const filename)
-{
-    char *cpy = NULL;
-
-    if (filename == NULL)
-        return FAILURE;
-    cpy = my_strdup(filename);
-    for (int i = 0; cpy[0] != '\0'; i++) {
-        cpy++;
-        if (cpy[0] == '.')
-            break;
-    }
-    if (my_strcmp(cpy, ".cor") != 0)
-        return FAILURE;
-    cpy = NULL;
-    return SUCCESS;
-}
 
 static int check_magic_nb(char * const filename)
 {
@@ -40,22 +23,21 @@ static int check_magic_nb(char * const filename)
     str = read_file(filename);
     if (str == NULL)
         return FAILURE;
-    for (int a = 24; i < 4; a -= 8) {
-        tmp |=  (unsigned char){str[i]} << a;
-        nb |= tmp;
+    for (int a = 24; i < 4; a -= 8, i += 1) {
+        tmp = tmp | ((unsigned char){str[i]} << a);
+        nb = nb | tmp;
         tmp = 0;
-        i++;
     }
     if (nb != COREWAR_EXEC_MAGIC)
         return FAILURE;
     return SUCCESS;
 }
 
-int lexer_vm(char * const filename)
+int lexer_warrior(char * const filename)
 {
-    if (check_extension(filename) != SUCCESS)
+    if (check_magic_nb(filename) != SUCCESS) {
+        write(STDERR_FILENO, "Corewar: Cannot identify the warrior.\n", 39);
         return FAILURE;
-    if (check_magic_nb(filename) != SUCCESS)
-        return FAILURE;
+    }
     return SUCCESS;
 }

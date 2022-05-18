@@ -22,6 +22,7 @@ typedef struct warrior_s {
     char *name;
     int id;
     int size;
+    int pc;
     int *reg;
     char *save;
     char *warrior_code;
@@ -65,5 +66,9 @@ typedef struct corewar_s {
     char old_memory[MEM_SIZE];
 } corewar_t;
 
+typedef struct instructions_s {
+    int instruction;
+    int (*ptr)(warrior_t *warrior, corewar_t *corewar);
+} instructions_t;
 
 #endif /* !STRUCT_COREWAR_H_ */

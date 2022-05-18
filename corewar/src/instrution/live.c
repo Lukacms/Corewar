@@ -8,9 +8,11 @@
 #include <stddef.h>
 #include "corewar.h"
 
-int live(corewar_t *corewar)
+int live(warrior_t *warrior, corewar_t *corewar)
 {
-    if (corewar == NULL)
+    if (!corewar || !warrior)
         return FAILURE;
+    my_printf("The player %d(%s)is alive.", warrior->id, warrior->name);
+    warrior->pc += 5;
     return SUCCESS;
 }

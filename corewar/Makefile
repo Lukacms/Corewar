@@ -6,16 +6,22 @@
 ##
 
 SRC	=	src/corewar.c	\
+		src/battlefield.c	\
 		src/lexing/lexer.c	\
 		src/misc/read_file.c	\
+		src/instrution/sub.c	\
+		src/instrution/add.c	\
+		src/instrution/sti.c	\
 		src/create_vm/create_vm.c	\
+		src/misc/fill_registers.c	\
 		src/misc/get_len_of_name.c	\
+		src/misc/from_byte_to_nbr.c	\
 		src/misc/get_size_of_file.c	\
 		src/create_vm/create_warrior.c	\
 		src/warriors/generate_warriors.c	\
-		src/argument_handling/check_opt.c	\
-		src/argument_handling/arg_handling.c	\
+		src/instrution/which_instruction.c	\
 		src/place_warriors/set_warriors_in_mem.c	\
+		src/argument_handling/check_parameters.c	\
 
 SRC_ARGS	=
 

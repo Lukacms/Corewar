@@ -9,12 +9,15 @@
     #define INFOS_H_
 
     #define MEM_SIZE (6 * 1024)
-    #define CYCLE_TO_DIE 1536 // number of cycle before beig declared dead
+    #define CYCLE_TO_DIE 1536 // number of cycle before being declared dead
     #define CYCLE_DELTA 5
+    #define IDX_MOD 512 // modulo of the index <
     #define NBR_LIVE 40
     #define COREWAR_EXEC_MAGIC 0xea83f3 //magic ^^
     #define REG_NUMBER 16 // r1 <--> rx
+    #define IND_SIZE 2
     #define DIR_SIZE 4
     #define REG_SIZE DIR_SIZE
+    #define START_CODE 2192
 
 #endif /* !INFOS_H_ */

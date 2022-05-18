@@ -31,7 +31,7 @@ int set_warriors_in_mem_loop(corewar_t *corewar)
     if (!corewar || !corewar->warrior_list.head)
         return FAILURE;
     tmp = corewar->warrior_list.head;
-    for (int i = 0; i < corewar->warrior_list.nbr_of_warriors; i++) {
+    for (u_int i = 0; i < corewar->warrior_list.nbr_of_warriors; i++) {
         set_warriors_in_mem(corewar, tmp);
         tmp = tmp->next;
     }
