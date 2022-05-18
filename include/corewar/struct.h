@@ -18,10 +18,15 @@
 * @param instruction_address The address of the next instruction of the warrior
 */
 typedef struct warrior_s {
+    char *filename;
     char *name;
     int id;
-    int reg[REG_NUMBER];
-    u_int *instruction_address;
+    int size;
+    int *reg;
+    char *save;
+    char *warrior_code;
+    int carry;
+    u_int instruction_address;
     struct warrior_s *next;
     struct warrior_s *prev;
 } warrior_t;

@@ -18,11 +18,15 @@ static int give_id_and_adress(warrior_t *warrior, corewar_t *corewar)
         (u_int){my_getnbr(corewar->params->a_parameter)};
     if (corewar->params->n_parameter)
         warrior->id = (u_int){my_getnbr(corewar->params->n_parameter)};
-    if (!corewar->params->n_parameter)
+    if (!corewar->params->n_parameter) {
         warrior->id = corewar->warrior_list.id_of_warriors;
+        corewar->warrior_list.id_of_warriors += 1;
+    }
     if (!corewar->params->a_parameter)
         warrior->instruction_address = (u_int){MEM_SIZE /
         (corewar->warrior_list.nbr_of_warriors + 1)};
+    corewar->params->a_parameter = NULL;
+    corewar->params->n_parameter = NULL;
     return SUCCESS;
 }
 
@@ -35,10 +39,13 @@ static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
     if (!warrior || !byte_file)
         return FAILURE;
     warrior_code = read_file(byte_file);
-    if (!warrior_code)
+    warrior->reg = malloc(sizeof(int) * REG_NUMBER);
+    if (!warrior_code || !warrior->reg)
         return FAILURE;
-    warrior_code += magic_nbr_len;
-    len_name = get_len_of_name(warrior_code);
+    warrior->save = warrior_code;
+    warrior->warrior_code = warrior->save + (4 + 128 + 2024);
+    for (; warrior->warrior_code[0] == '\0'; warrior->warrior_code += 1);
+    len_name = get_len_of_name(warrior->save + magic_nbr_len);
     warrior->name = malloc(sizeof(char) * (len_name + 1));
     my_strncpy(warrior->name, warrior_code, len_name);
     warrior->name[len_name] = '\0';
@@ -50,7 +57,9 @@ int create_warrior(corewar_t *corewar, char *byte_file)
 {
     warrior_t *warrior = malloc(sizeof(warrior_t));
 
-    if (!warrior || give_warrior_dna(warrior,
+    warrior->reg = malloc(sizeof(int) * (REG_NUMBER));
+    warrior->carry = 0;
+    if (!warrior || warrior->reg ||give_warrior_dna(warrior,
         corewar, byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;
