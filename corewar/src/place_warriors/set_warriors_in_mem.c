@@ -36,9 +36,5 @@ int set_warriors_in_mem_loop(corewar_t *corewar)
         tmp = tmp->next;
     }
     int i = 0;
-    while (i < MEM_SIZE) {
-        my_printf("%c", corewar->memory[i]);
-        i += 1;
-    }
     return SUCCESS;
 }
