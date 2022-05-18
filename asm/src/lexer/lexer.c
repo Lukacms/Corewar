@@ -37,6 +37,8 @@ int lexer(infos_t *infos)
         return FAILURE;
     if (!(infos->file = load_file_in_array(infos->input_name)))
         return print_error(LEXER_LOAD_ERR, 0, FAILURE);
+    if (array_size(infos->file) < 2)
+        return FAILURE;
     for (index = 2; infos->file[index]; index += 1) {
         if (!infos->file[index][0])
             continue;
