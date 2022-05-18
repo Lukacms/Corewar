@@ -14,6 +14,7 @@ SRC	=	src/corewar.c	\
 		src/warriors/generate_warriors.c	\
 		src/argument_handling/check_opt.c	\
 		src/argument_handling/arg_handling.c	\
+		src/place_warriors/set_warriors_in_mem.c	\
 
 SRC_ARGS	=
 
