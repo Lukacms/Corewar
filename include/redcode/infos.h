@@ -101,6 +101,7 @@ typedef struct basics_s {
 } basics_t;
 
 typedef struct infos_s {
+    header_t header;
     char **file;
     char *output_filename;
     char *input_name;

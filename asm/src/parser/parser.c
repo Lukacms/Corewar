@@ -16,13 +16,40 @@ static int is_comment(char c)
     return 0;
 }
 
+static int init_header(infos_t *infos, char **file)
+{
+    char **name_parser = NULL;
+    char **comment_parser = NULL;
+
+    if (!file || !(*file))
+        return FAILURE;
+    if (array_size(file) <= 2)
+        return FAILURE;
+    name_parser = str_to_array_choice(file[0], "\"");
+    if (!name_parser || !(*name_parser) || !name_parser[1])
+        return FAILURE;
+    comment_parser = str_to_array_choice(file[1], "\"");
+    if (!comment_parser || !(*comment_parser) || !comment_parser[1])
+        return FAILURE;
+    if (my_strlen(name_parser[1]) > PROG_NAME_LENGTH
+        || my_strlen(comment_parser[1]) > COMMENT_LENGTH)
+        return FAILURE;
+    my_strncpy(infos->header.prog_name, name_parser[1], PROG_NAME_LENGTH + 1);
+    my_strncpy(infos->header.comment, comment_parser[1], COMMENT_LENGTH+ 1);
+    return SUCCESS;
+}
+
 int parser(infos_t *infos)
 {
     int size = 0;
 
     if (!infos || !infos->file)
         return FAILURE;
+    if (check_name_and_comment(infos->file) == FAILURE)
+        return FAILURE;
     if ((size = array_size(infos->file)) <= 2)
+        return FAILURE;
+    if (init_header(infos, infos->file) == FAILURE)
         return FAILURE;
     for (unsigned int i = 2; infos->file[i]; i += 1) {
         if (is_comment(infos->file[i][0]))
