@@ -7,25 +7,6 @@
 
 #include "redcode.h"
 
-static char *fill_header(int size, int magic)
-{
-    char *name_header = malloc(size);
-    unsigned char temp = 0;
-
-    if (!name_header)
-        return NULL;
-    if (magic == COREWAR_EXEC_MAGIC) {
-        name_header[0] = '\0';
-        temp = magic >> 16;
-        name_header[1] = temp;
-        temp = magic >> 8;
-        name_header[2] = temp;
-        temp = magic;
-        name_header[3] = temp;
-    }
-    return name_header;
-}
-
 static char **get_info_header(char *file)
 {
     char **file_lines = NULL;

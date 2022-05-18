@@ -37,16 +37,12 @@ static const op_t op[] = {
 
 static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
 {
-    int size = array_size(temp_instruction);
     char **move_array = temp_instruction + 1;
+    int size = array_size(move_array);
 
-    if (size != op[i].nbr_args + 1) {
+    if (size != op[i].nbr_args) {
         free_array((void **)temp_instruction);
         return print_error(PARSER_ERR_NBARG, y, FAILURE);
-    }
-    if (!(node->args = dup_array(temp_instruction + 1))) {
-        free_array((void **)temp_instruction);
-        return print_error(PARSER_ERR_DUP, y, FAILURE);
     }
     node->type = op[i].cmd;
     node->cycle = op[i].nbr_cycles;
