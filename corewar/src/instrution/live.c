@@ -13,6 +13,6 @@ int live(warrior_t *warrior, corewar_t *corewar)
     if (!corewar || !warrior)
         return FAILURE;
     my_printf("The player %d(%s)is alive.", warrior->id, warrior->name);
-    warrior->pc += 5;
+    warrior->pc += 2;
     return SUCCESS;
 }

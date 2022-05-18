@@ -17,6 +17,10 @@
     #define REG_NUMBER 16 // r1 <--> rx
     #define IND_SIZE 2
     #define DIR_SIZE 4
+    #define T_REG 1 // register
+    #define T_DIR 2 // direct (ld %1,r1 put 1 into r1)
+    #define T_IND 4 // see op.h
+    #define T_LAB 8 // LABEL
     #define REG_SIZE DIR_SIZE
     #define START_CODE 2192
 

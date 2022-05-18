@@ -51,4 +51,6 @@ int from_byte_to_nbr(warrior_t *warrior, corewar_t *corewar);
 
 int check_parameters(int argc, char * const argv[]);
 
+int live(warrior_t *warrior, corewar_t *corewar);
+
 #endif /* !COREWAR_H_ */

@@ -47,8 +47,7 @@ static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
     warrior->save = warrior_code;
     warrior->warrior_code = warrior->save + START_CODE;
     len_name = get_len_of_name(warrior->save + magic_nbr_len);
-    warrior->name = malloc(sizeof(char) * (len_name + 1));
-    my_strncpy(warrior->name, warrior_code, len_name);
+    warrior->name = my_strndup(warrior->save, len_name);
     warrior->name[len_name] = '\0';
     give_id_and_adress(warrior, corewar);
     return SUCCESS;
