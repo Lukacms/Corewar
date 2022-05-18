@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2022
-** Corewar [WSL: Manjaro]
+** corewar
 ** File description:
-** add
+** sub
 */
 
 #include "corewar.h"
 
-void add(warrior_t *warrior, int nbr_register,
+void sub(warrior_t *warrior, int nbr_register,
         int nbr_register_sec, int results)
 {
     int reg = 0;
@@ -17,7 +17,7 @@ void add(warrior_t *warrior, int nbr_register,
         return;
     reg = warrior->reg[nbr_register];
     reg_sec = warrior->reg[nbr_register_sec];
-    reg = reg + reg_sec;
+    reg = reg - reg_sec;
     if (reg == 0)
         warrior->carry = 1;
     else
@@ -25,3 +25,4 @@ void add(warrior_t *warrior, int nbr_register,
     warrior->reg[results] = reg;
     return;
 }
+
