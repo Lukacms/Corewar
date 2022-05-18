@@ -17,6 +17,9 @@ int launch(int argc, char * const argv[])
     corewar->params = malloc(sizeof(parameters_t));
     if (arg_handling(argc, argv, corewar) != SUCCESS || !corewar->params)
         return FAILURE;
-    generate_warriors(corewar, argc, argv);
+    if (generate_warriors(corewar, argc, argv) == FAILURE 
+        || set_warriors_in_mem_loop(corewar) == FAILURE)
+        return FAILURE;
+    my_printf("%s\n", corewar->warrior_list.head->warrior_code);
     return SUCCESS;
 }
