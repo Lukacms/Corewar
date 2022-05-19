@@ -8,6 +8,7 @@
 SRC	=	src/corewar.c	\
 		src/battlefield.c	\
 		src/lexing/lexer.c	\
+		src/instrution/ld.c	\
 		src/misc/read_file.c	\
 		src/instrution/sub.c	\
 		src/instrution/add.c	\

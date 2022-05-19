@@ -9,17 +9,17 @@
 #include "corewar.h"
 
 static const instructions_t instructions[] = {
-    {0x01, &live},/*
-    {0x02, &ld},
+    {0x01, &live},
+    {0x02, &ld},/*
     {0x03, &st},*/
     {0x04, &add},
     {0x05, &sub},
 /*    {0x06, &and},
     {0x07, &or},
-    {0x08, &xor},
-    {0x09, &zjmp},
-    {0x0a, &ldi},*/
-    {0x0b, &sti},/*
+    {0x08, &xor},*/
+    /*{0x09, &zjmp},
+    {0x0a, &ldi},
+    */{0x0b, &sti},/*
     {0x0c, &fork},
     {0x0d, &lld},
     {0x0e, &lldi},
