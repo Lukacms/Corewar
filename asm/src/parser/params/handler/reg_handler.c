@@ -13,7 +13,7 @@ int reg_handler(char *param, args_t *node)
     int register_nb = 0;
 
     if (!param || !node)
-        return print_error(PARSER_ERR_POINTER, 0, FAILURE);
+        return FAILURE;
     if (param[0] != REG_CHAR)
         return FAILURE;
     if ((register_nb = my_getnbr(param + 1)) <= 0 || register_nb > 16)
