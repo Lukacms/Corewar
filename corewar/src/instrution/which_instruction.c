@@ -28,9 +28,19 @@ static const instructions_t instructions[] = {
     {0x00, NULL},
 };
 
+static void warrior_rest(warrior_t *warrior)
+{
+    warrior->cycle_rest -= 1;
+    return;
+}
+
 static int which_instruction(corewar_t *corewar, warrior_t *warrior)
 {
     for (int i = 0; instructions[i].ptr != NULL; i += 1) {
+        if (warrior->cycle_rest != 0) {
+            warrior_rest(warrior);
+            return SUCCESS;
+        }
         if (instructions[i].instruction ==
             corewar->memory[warrior->pc])
             return instructions[i].ptr(warrior, corewar);

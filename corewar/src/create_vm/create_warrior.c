@@ -49,6 +49,7 @@ static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
     len_name = get_len_of_name(warrior->save + magic_nbr_len);
     warrior->name = my_strndup(warrior->save + magic_nbr_len, len_name);
     warrior->name[len_name] = '\0';
+    warrior->cycle_rest = 0;
     give_id_and_adress(warrior, corewar);
     return SUCCESS;
 }

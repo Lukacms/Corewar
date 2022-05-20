@@ -16,6 +16,7 @@ int sub(warrior_t *warrior, corewar_t *corewar)
 
     if (!warrior || !warrior->reg || !registers)
         return FAILURE;
+    warrior->cycle_rest = 10;
     fill_registers(corewar, warrior, registers);
     reg = warrior->reg[registers[0]];
     reg_sec = warrior->reg[registers[1]];

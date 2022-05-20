@@ -14,6 +14,7 @@ int zjump(warrior_t *warrior, corewar_t *corewar)
 
     if (!warrior || !corewar)
         return FAILURE;
+    warrior->cycle_rest = 20;
     old_pc = warrior->pc;
     warrior->pc += 1;
     if (warrior->carry == 1)

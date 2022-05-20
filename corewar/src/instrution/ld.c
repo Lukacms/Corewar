@@ -17,6 +17,7 @@ int ld(warrior_t *warrior, corewar_t *corewar)
 
     if (!warrior || !corewar)
         return FAILURE;
+    warrior->cycle_rest = 5;
     warrior->pc += 1;
     if ((unsigned char){corewar->memory[warrior->pc]} == DIRECT) {
         warrior->pc += 1;
