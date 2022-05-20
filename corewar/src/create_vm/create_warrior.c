@@ -24,7 +24,7 @@ static int give_id_and_adress(warrior_t *warrior, corewar_t *corewar)
     }
     if (!corewar->params->a_parameter)
         warrior->instruction_address = (u_int){MEM_SIZE /
-        (corewar->warrior_list.nbr_of_warriors + 1)};
+        (corewar->warrior_list.nbr_of_warriors + 1) % MEM_SIZE};
     corewar->params->a_parameter = NULL;
     corewar->params->n_parameter = NULL;
     return SUCCESS;
@@ -40,15 +40,16 @@ char *byte_file)
         return FAILURE;
     warrior_code = read_file(byte_file);
     warrior->reg = malloc(sizeof(int) * REG_NUMBER);
+    warrior->filename = my_strdup(byte_file);
+    warrior->size = get_size_of_file(warrior->filename);
     if (!warrior_code || !warrior->reg)
         return FAILURE;
     warrior->save = warrior_code;
-    warrior->warrior_code = warrior->save + (4 + 128 + 2024);
-    for (; warrior->warrior_code[0] == '\0'; warrior->warrior_code += 1);
+    warrior->warrior_code = warrior->save + START_CODE;
     len_name = get_len_of_name(warrior->save + magic_nbr_len);
-    warrior->name = malloc(sizeof(char) * (len_name + 1));
-    my_strncpy(warrior->name, warrior_code, len_name);
+    warrior->name = my_strndup(warrior->save + magic_nbr_len, len_name);
     warrior->name[len_name] = '\0';
+    warrior->cycle_rest = 0;
     give_id_and_adress(warrior, corewar);
     return SUCCESS;
 }
@@ -63,6 +64,7 @@ int create_warrior(corewar_t *corewar, char *byte_file)
         byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;
+    warrior->pc = warrior->instruction_address;
     if (!corewar->warrior_list.head) {
         warrior->next = warrior;
         warrior->prev = warrior;

@@ -22,10 +22,12 @@ typedef struct warrior_s {
     char *name;
     int id;
     int size;
+    int pc;
+    int cycle_rest;
+    int carry;
     int *reg;
     char *save;
     char *warrior_code;
-    int carry;
     u_int instruction_address;
     struct warrior_s *next;
     struct warrior_s *prev;
@@ -57,12 +59,21 @@ typedef struct parameters_s {
 */
 typedef struct corewar_s {
     int nbr_cycles;
-    int dump;
     warriors_list_t warrior_list;
     parameters_t *params;
     int dump_cycles;
     char memory[MEM_SIZE];
     char old_memory[MEM_SIZE];
 } corewar_t;
+
+/*
+* @brief General structure for instructions of Corewar
+* @param instruction The instructions of the Corewar in hexadecimal format
+* @param ptr The pointers that redirect to the execution of instructions
+*/
+typedef struct instructions_s {
+    int instruction;
+    int (*ptr)(warrior_t *warrior, corewar_t *corewar);
+} instructions_t;
 
 #endif /* !STRUCT_COREWAR_H_ */
