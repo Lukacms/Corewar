@@ -26,6 +26,7 @@ SRC_PARSER	=	src/parser/parser.c	\
 		src/parser/params/handler/dir_handler.c	\
 		src/parser/params/handler/ind_handler.c	\
 		src/parser/params/handler/reg_handler.c	\
+		src/parser/is_label.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
 				src/compile/compile_collected_infos.c	\

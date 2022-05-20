@@ -46,8 +46,7 @@ static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
     }
     node->type = op[i].cmd;
     node->cycle = op[i].nbr_cycles;
-    free_array((void **)temp_instruction);
-    return SUCCESS;
+    return get_params(node, op[i], temp_instruction);
 }
 
 static int get_optype(opnode_t *node, char **line, int y)
@@ -86,9 +85,11 @@ int infos_in_opnode(char *line, opnode_t *node, int y)
     if (!(arr = str_to_array_choice(line, SEPARATOR)))
         return print_error(PARSER_ERR_DUP, y, FAILURE);
     if ((index = is_name(arr[0])))
-        node->fun_name = my_strdup(arr[0]);
-    if (!index && get_optype(node, arr + index, y) != SUCCESS)
+        node->fun_name = my_strndup(arr[0], my_strlen(arr[0]) - 1);
+    if (get_optype(node, arr + index, y) != SUCCESS && !index)
         return FAILURE;
+    if (node->fun_name && is_label(node->fun_name) != SUCCESS)
+        return print_error(PARSER_ERR_LAB, 0, FAILURE);
     free_array((void **)arr);
     return SUCCESS;
 }
