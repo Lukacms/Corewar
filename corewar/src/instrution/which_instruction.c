@@ -19,8 +19,8 @@ static const instructions_t instructions[] = {
     {0x08, &xor},*/
     {0x09, &instruction_zjump},/*
     {0x0a, &ldi},
-    */{0x0b, &instruction_sti},/*
-    {0x0c, &fork},
+    */{0x0b, &instruction_sti},
+    {0x0c, &instruction_fork},/*
     {0x0d, &lld},
     {0x0e, &lldi},
     {0x0f, &lfork},

@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-static int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior)
+int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior)
 {
     int count = (4 + 128 + 2024);
     char character = '0';

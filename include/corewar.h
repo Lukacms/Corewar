@@ -53,11 +53,15 @@ int instruction_aff(warrior_t *warrior, corewar_t *corewar);
 
 int instruction_zjump(warrior_t *warrior, corewar_t *corewar);
 
+int instruction_fork(warrior_t *warrior, corewar_t *corewar);
+
 int from_byte_to_nbr(warrior_t *warrior, corewar_t *corewar, int opt);
 
 int check_parameters(int argc, char * const argv[]);
 
 int instruction_live(warrior_t *warrior, corewar_t *corewar);
+
+int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior);
 
 int dump_memory(corewar_t *corewar);
 
