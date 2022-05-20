@@ -30,6 +30,11 @@ enough instructions\n"
     #define PARSER_ERR_DUP "parser error on line: %d; program failure\n"
     #define PARSER_ERR_MALLOC "parser error; malloc failure\n"
     #define PARSER_ERR_POINTER "parser error; invalid pointer\n"
+    #define PARSER_ERR_LEN "parser error; param is not complete\n"
+    #define PARSER_ERR_DIR "parser error; param is not a direct param\n"
+    #define PARSER_ERR_IND "parser error; param is not an indirect param\n"
+    #define PARSER_ERR_REG "parser error; param is not a register\n"
+    #define PARSER_ERR_LAB "parser error; param is not a label\n"
 
     #define SEPARATOR "\t"
     #define NAME ".name"
@@ -57,6 +62,7 @@ int ind_dir_handler(char *param, args_t *node);
 int reg_ind_handler(char *param, args_t *node);
 int reg_dir_ind_handler(char *param, args_t *node);
 int check_param_pos(char **param, op_t op, u_int i);
+int is_label(char *str);
 
 // more generic functions
 int array_size(char **array);

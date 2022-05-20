@@ -120,7 +120,7 @@ typedef int (*type_handler_t)(char *param, args_t *node);
 
 typedef struct param_type_s {
     code_t type;
-    type_handler_t handler;
+    type_handler_t param_handler;
 } param_type_t;
 
 #endif /* !INFOS_H_ */
