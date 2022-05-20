@@ -31,7 +31,7 @@ static int give_id_and_adress(warrior_t *warrior, corewar_t *corewar)
 }
 
 static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
-                            char *byte_file)
+char *byte_file)
 {
     char *warrior_code = {0};
     int len_name = {0};
@@ -60,8 +60,8 @@ int create_warrior(corewar_t *corewar, char *byte_file)
 
     warrior->reg = malloc(sizeof(int) * (REG_NUMBER));
     warrior->carry = 0;
-    if (!warrior || !warrior->reg || give_warrior_dna(warrior,
-        corewar, byte_file) != SUCCESS)
+    if (!warrior || warrior->reg || give_warrior_dna(warrior, corewar,
+        byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;
     warrior->pc = warrior->instruction_address;

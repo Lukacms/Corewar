@@ -11,7 +11,7 @@
 #include "my.h"
 
 static int check_dump_nb(char * const argv[], int *i, corewar_t *corewar,
-        bool *is_cmd)
+bool *is_cmd)
 {
     int dump_nb = 0;
 

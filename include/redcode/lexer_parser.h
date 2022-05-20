@@ -8,6 +8,7 @@
 #ifndef LEXER_PARSER_H_
     #define LEXER_PARSER_H_
 
+    #include <sys/types.h>
     #include "redcode/infos.h"
 
     #define HELP "-h"
@@ -25,7 +26,15 @@ enough instructions\n"
 // error parser
     #define PARSER_ERR_INST "parser error on line: %d; invalid instruction\n"
     #define PARSER_ERR_NBARG "parser error on line: %d, wrong nb of arguments\n"
+    #define PARSER_ERR_ARGTYPE "parser error, argument is of wrong type\n"
     #define PARSER_ERR_DUP "parser error on line: %d; program failure\n"
+    #define PARSER_ERR_MALLOC "parser error; malloc failure\n"
+    #define PARSER_ERR_POINTER "parser error; invalid pointer\n"
+    #define PARSER_ERR_LEN "parser error; param is not complete\n"
+    #define PARSER_ERR_DIR "parser error; param is not a direct param\n"
+    #define PARSER_ERR_IND "parser error; param is not an indirect param\n"
+    #define PARSER_ERR_REG "parser error; param is not a register\n"
+    #define PARSER_ERR_LAB "parser error; param is not a label\n"
 
     #define SEPARATOR "\t"
     #define NAME ".name"
@@ -41,6 +50,19 @@ int get_basics(infos_t *infos, basics_t *bases);
 int parser(infos_t *infos);
 int add_opnode(infos_t *infos, char *line, int y);
 int infos_in_opnode(char *line, opnode_t *node, int y);
+int add_param_node(opnode_t *opnode, op_t op, char *args, u_int i);
+int get_params(opnode_t *opnode, op_t op, char **args);
+int param_infos(args_t *node, op_t op, char *arg, u_int i);
+// function pointers to determine a command parameter's type
+int dir_handler(char *param, args_t *node);
+int reg_handler(char *param, args_t *node);
+int ind_handler(char *param, args_t *node);
+int reg_dir_handler(char *param, args_t *node);
+int ind_dir_handler(char *param, args_t *node);
+int reg_ind_handler(char *param, args_t *node);
+int reg_dir_ind_handler(char *param, args_t *node);
+int check_param_pos(char **param, op_t op, u_int i);
+int is_label(char *str);
 
 // more generic functions
 int array_size(char **array);

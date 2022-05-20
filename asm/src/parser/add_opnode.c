@@ -10,7 +10,10 @@
 
 static void init_node(opnode_t *node)
 {
-    node->args = NULL;
+    node->head = NULL;
+    node->fun_name = NULL;
+    node->size = 0;
+    node->cycle = '\0';
     node->type = NOTHING;
     node->prev = node;
     node->next = node;
