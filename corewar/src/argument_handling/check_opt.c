@@ -51,11 +51,10 @@ int check_opt(char * const argv[], int *i, corewar_t *corewar)
         return FAILURE;
     if (argv[*i][0] != '-' && argv[*i][0] != '.')
         return SUCCESS;
-    if (check_dump_nb(argv, i, corewar, &is_cmd) == FAILURE && argv[*i][0] == '-')
+    if (check_dump_nb(argv, i, corewar, &is_cmd) == FAILURE
+        && argv[*i][0] == '-')
         return FAILURE;
     if (check_warrior(argv, i, corewar, &is_cmd) == FAILURE)
         return FAILURE;
-/*    if (is_cmd == false)
-        return FAILURE;*/
     return SUCCESS;
 }

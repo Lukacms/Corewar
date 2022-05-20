@@ -7,8 +7,8 @@
 
 #include "corewar.h"
 
-unsigned char DIRECT = 144;
-unsigned char INDIRECT = 208;
+static const unsigned char DIRECT = 144;
+static const unsigned char INDIRECT = 208;
 
 int ld(warrior_t *warrior, corewar_t *corewar)
 {

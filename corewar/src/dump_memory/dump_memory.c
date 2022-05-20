@@ -25,7 +25,7 @@ int dump_memory(corewar_t *corewar)
         if (flag == 0) {
             my_printf("%x", corewar->memory[count]);
             flag = 1;
-        } else 
+        } else
             my_printf(" %x", corewar->memory[count]);
     }
     my_printf("\n");

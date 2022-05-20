@@ -29,4 +29,3 @@ int sub(warrior_t *warrior, corewar_t *corewar)
     warrior->pc += 5;
     return SUCCESS;
 }
-
