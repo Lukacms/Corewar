@@ -6,6 +6,7 @@
 */
 
 #include "corewar.h"
+#include "my.h"
 
 int instruction_aff(warrior_t *warrior, corewar_t *corewar)
 {

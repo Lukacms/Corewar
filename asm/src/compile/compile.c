@@ -6,3 +6,10 @@
 */
 
 #include "redcode.h"
+
+int compile(infos_t *infos)
+{
+    if (!infos)
+        return FAILURE;
+    return SUCCESS;
+}
