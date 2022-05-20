@@ -17,6 +17,6 @@ int live(warrior_t *warrior, corewar_t *corewar)
         return FAILURE;
     warrior->pc += 1;
     number = from_byte_to_nbr(warrior, corewar, 4);
-    my_printf("The player %d(%s)is alive.", number, warrior->name);
+    my_printf("The player %d(%s)is alive.\n", number, warrior->name);
     return SUCCESS;
 }

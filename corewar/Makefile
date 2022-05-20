@@ -14,6 +14,7 @@ SRC	=	src/corewar.c	\
 		src/instrution/add.c	\
 		src/instrution/sti.c	\
 		src/instrution/live.c	\
+		src/instrution/zjump.c	\
 		src/create_vm/create_vm.c	\
 		src/misc/fill_registers.c	\
 		src/misc/get_len_of_name.c	\

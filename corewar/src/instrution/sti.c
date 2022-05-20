@@ -20,8 +20,9 @@ int sti(warrior_t *warrior, corewar_t *corewar)
     *pc += 2;
     reg = corewar->memory[*pc];
     *pc += 1;
-    param_one = from_byte_to_nbr(warrior, corewar, T_DIR);
-    param_two = from_byte_to_nbr(warrior, corewar, T_DIR);
+    param_one = from_byte_to_nbr(warrior, corewar, IND_SIZE);
+    param_two = from_byte_to_nbr(warrior, corewar, IND_SIZE);
+    my_printf("%d\n", param_one);
     corewar->memory[*pc + (param_one + param_two) % IDX_MOD] = warrior->reg[reg];
     return SUCCESS;
 }

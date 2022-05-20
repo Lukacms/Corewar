@@ -49,6 +49,8 @@ int sti(warrior_t *warrior, corewar_t *corewar);
 
 int ld(warrior_t *warrior, corewar_t *corewar);
 
+int zjump(warrior_t *warrior, corewar_t *corewar);
+
 int from_byte_to_nbr(warrior_t *warrior, corewar_t *corewar, int opt);
 
 int check_parameters(int argc, char * const argv[]);

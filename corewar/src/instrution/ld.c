@@ -20,11 +20,11 @@ int ld(warrior_t *warrior, corewar_t *corewar)
     warrior->pc += 1;
     if ((unsigned char){corewar->memory[warrior->pc]} == DIRECT) {
         warrior->pc += 1;
-        value = from_byte_to_nbr(warrior, corewar, T_IND);
+        value = from_byte_to_nbr(warrior, corewar, DIR_SIZE);
     }
     else if ((unsigned char){corewar->memory[warrior->pc]} == INDIRECT) {
         warrior->pc += 1;
-        value = from_byte_to_nbr(warrior, corewar, T_DIR);
+        value = from_byte_to_nbr(warrior, corewar, IND_SIZE);
     }
     reg = corewar->memory[warrior->pc];
     warrior->reg[reg] = value;

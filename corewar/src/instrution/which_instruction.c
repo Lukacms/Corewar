@@ -17,7 +17,7 @@ static const instructions_t instructions[] = {
 /*    {0x06, &and},
     {0x07, &or},
     {0x08, &xor},*/
-    /*{0x09, &zjmp},
+    {0x09, &zjump},/*
     {0x0a, &ldi},
     */{0x0b, &sti},/*
     {0x0c, &fork},
@@ -30,14 +30,10 @@ static const instructions_t instructions[] = {
 
 static int which_instruction(corewar_t *corewar, warrior_t *warrior)
 {
-    int status = SUCCESS;
-
     for (int i = 0; instructions[i].ptr != NULL; i += 1) {
         if (instructions[i].instruction ==
             corewar->memory[warrior->pc])
-            status = instructions[i].ptr(warrior, corewar);
-        if (status != SUCCESS)
-            return FAILURE;
+            return instructions[i].ptr(warrior, corewar);
     }
     return SUCCESS;
 }
