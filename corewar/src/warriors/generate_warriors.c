@@ -33,7 +33,7 @@ int generate_warriors(corewar_t *corewar, int argc, char * const argv[])
     tmp += 1;
     if (my_strcmp(tmp[0], "-dump") == 0) {
         tmp += 1;
-        corewar->dump = my_getnbr(tmp[0]);
+        corewar->dump_cycles = my_getnbr(tmp[0]);
         tmp += 1;
         counter += 2;
     }

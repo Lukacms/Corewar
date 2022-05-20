@@ -6,17 +6,18 @@
 */
 
 #include <stdbool.h>
+#include <unistd.h>
 #include "corewar.h"
 #include "my.h"
 
 int battlefield(corewar_t *corewar)
 {
-    int cycles = 0;
-
     while (true) {
         if (launch_which_instruction(corewar) != SUCCESS)
             return FAILURE;
-        cycles += 1;
+        if (corewar->dump_cycles == corewar->nbr_cycles)
+            dump_memory(corewar);
+        corewar->nbr_cycles += 1;
     }
     return SUCCESS;
 }

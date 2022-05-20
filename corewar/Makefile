@@ -13,6 +13,7 @@ SRC	=	src/corewar.c	\
 		src/instrution/sub.c	\
 		src/instrution/add.c	\
 		src/instrution/sti.c	\
+		src/instrution/aff.c	\
 		src/instrution/live.c	\
 		src/instrution/zjump.c	\
 		src/create_vm/create_vm.c	\
@@ -20,6 +21,7 @@ SRC	=	src/corewar.c	\
 		src/misc/get_len_of_name.c	\
 		src/misc/from_byte_to_nbr.c	\
 		src/misc/get_size_of_file.c	\
+		src/dump_memory/dump_memory.c	\
 		src/create_vm/create_warrior.c	\
 		src/warriors/generate_warriors.c	\
 		src/instrution/which_instruction.c	\

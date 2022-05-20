@@ -59,7 +59,6 @@ typedef struct parameters_s {
 */
 typedef struct corewar_s {
     int nbr_cycles;
-    int dump;
     warriors_list_t warrior_list;
     parameters_t *params;
     int dump_cycles;
