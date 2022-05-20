@@ -5,6 +5,7 @@
 ** battlefield
 */
 
+#include <stdbool.h>
 #include "corewar.h"
 #include "my.h"
 
