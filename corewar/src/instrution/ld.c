@@ -10,7 +10,7 @@
 static const unsigned char DIRECT = 144;
 static const unsigned char INDIRECT = 208;
 
-int ld(warrior_t *warrior, corewar_t *corewar)
+int instruction_ld(warrior_t *warrior, corewar_t *corewar)
 {
     int value = 0;
     int reg = 0;

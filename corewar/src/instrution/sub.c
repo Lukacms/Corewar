@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "corewar.h"
 
-int sub(warrior_t *warrior, corewar_t *corewar)
+int instruction_sub(warrior_t *warrior, corewar_t *corewar)
 {
     int reg = 0;
     int reg_sec = 0;

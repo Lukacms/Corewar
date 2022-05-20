@@ -41,23 +41,23 @@ int launch_which_instruction(corewar_t *corewar);
 
 int battlefield(corewar_t *corewar);
 
-int add(warrior_t *warrior, corewar_t *corewar);
+int instruction_add(warrior_t *warrior, corewar_t *corewar);
 
-int sub(warrior_t *warrior, corewar_t *corewar);
+int instruction_sub(warrior_t *warrior, corewar_t *corewar);
 
-int sti(warrior_t *warrior, corewar_t *corewar);
+int instruction_sti(warrior_t *warrior, corewar_t *corewar);
 
-int ld(warrior_t *warrior, corewar_t *corewar);
+int instruction_ld(warrior_t *warrior, corewar_t *corewar);
 
-int aff(warrior_t *warrior, corewar_t *corewar);
+int instruction_aff(warrior_t *warrior, corewar_t *corewar);
 
-int zjump(warrior_t *warrior, corewar_t *corewar);
+int instruction_zjump(warrior_t *warrior, corewar_t *corewar);
 
 int from_byte_to_nbr(warrior_t *warrior, corewar_t *corewar, int opt);
 
 int check_parameters(int argc, char * const argv[]);
 
-int live(warrior_t *warrior, corewar_t *corewar);
+int instruction_live(warrior_t *warrior, corewar_t *corewar);
 
 int dump_memory(corewar_t *corewar);
 

@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-int zjump(warrior_t *warrior, corewar_t *corewar)
+int instruction_zjump(warrior_t *warrior, corewar_t *corewar)
 {
     int index = 0;
     int old_pc = 0;

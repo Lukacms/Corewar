@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-int aff(warrior_t *warrior, corewar_t *corewar)
+int instruction_aff(warrior_t *warrior, corewar_t *corewar)
 {
     int reg = 0;
 

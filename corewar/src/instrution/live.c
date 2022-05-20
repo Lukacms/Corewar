@@ -9,7 +9,7 @@
 #include "corewar.h"
 #include "my.h"
 
-int live(warrior_t *warrior, corewar_t *corewar)
+int instruction_live(warrior_t *warrior, corewar_t *corewar)
 {
     int number = 0;
 

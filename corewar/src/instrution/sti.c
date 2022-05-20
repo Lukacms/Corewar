@@ -8,7 +8,7 @@
 #include "corewar.h"
 #include "my.h"
 
-int sti(warrior_t *warrior, corewar_t *corewar)
+int instruction_sti(warrior_t *warrior, corewar_t *corewar)
 {
     int reg = 0;
     int *pc = &warrior->pc;
