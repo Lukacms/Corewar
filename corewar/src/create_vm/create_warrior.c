@@ -59,7 +59,7 @@ int create_warrior(corewar_t *corewar, char *byte_file)
 
     warrior->reg = malloc(sizeof(int) * (REG_NUMBER));
     warrior->carry = 0;
-    if (!warrior || !warrior->reg ||give_warrior_dna(warrior,
+    if (!warrior || !warrior->reg || give_warrior_dna(warrior,
         corewar, byte_file) != SUCCESS)
         return FAILURE;
     corewar->warrior_list.nbr_of_warriors += 1;

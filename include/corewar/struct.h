@@ -23,10 +23,11 @@ typedef struct warrior_s {
     int id;
     int size;
     int pc;
+    int cycle_rest;
+    int carry;
     int *reg;
     char *save;
     char *warrior_code;
-    int carry;
     u_int instruction_address;
     struct warrior_s *next;
     struct warrior_s *prev;
@@ -66,6 +67,11 @@ typedef struct corewar_s {
     char old_memory[MEM_SIZE];
 } corewar_t;
 
+/*
+* @brief General structure for instructions of Corewar
+* @param instruction The instructions of the Corewar in hexadecimal format
+* @param ptr The pointers that redirect to the execution of instructions
+*/
 typedef struct instructions_s {
     int instruction;
     int (*ptr)(warrior_t *warrior, corewar_t *corewar);

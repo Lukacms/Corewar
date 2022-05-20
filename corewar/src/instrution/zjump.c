@@ -19,6 +19,6 @@ int zjump(warrior_t *warrior, corewar_t *corewar)
     if (warrior->carry == 1)
         return SUCCESS;
     index = from_byte_to_nbr(warrior, corewar, IND_SIZE);
-    warrior->pc = (old_pc + index) % IDX_MOD;
+    warrior->pc = warrior->instruction_address + (old_pc + index) % IDX_MOD;
     return SUCCESS;
 }
