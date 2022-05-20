@@ -42,9 +42,9 @@
     #define COREWAR_EXEC_MAGIC 0xea83f3 //magic ^^
 
 typedef struct header_s {
-    int  magic;
+    int magic;
     char prog_name[PROG_NAME_LENGTH + 1];
-    int  prog_size;
+    int prog_size;
     char comment[COMMENT_LENGTH + 1];
 } header_t;
 

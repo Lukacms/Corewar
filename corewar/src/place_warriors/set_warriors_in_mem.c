@@ -19,7 +19,7 @@ static int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior)
         index = (warrior->instruction_address + i) % MEM_SIZE;
         corewar->memory[index] = character;
         i += 1;
-        count  += 1;
+        count += 1;
     }
     return SUCCESS;
 }
