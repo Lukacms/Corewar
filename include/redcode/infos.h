@@ -31,6 +31,8 @@
     #define T_IND 4 // see op.h
     #define T_LAB 8 // LABEL
 
+    #define ONEARG 1
+    #define REG_TRUE_SIZE 1
     #define IND_SIZE 2
     #define DIR_SIZE 4
     #define REG_SIZE DIR_SIZE

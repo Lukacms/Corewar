@@ -16,6 +16,7 @@ typedef int (*param_handler_t)(args_t *param, FILE *fd);
 
 typedef struct param_type_handler_s {
     code_t type;
+    char bit;
     param_handler_t handler;
 } param_type_handler_s;
 

@@ -9,6 +9,8 @@
 
 int compile_indirect(args_t *param, FILE *fd)
 {
+    char ind = 0b11;
+
     if (!param || !fd)
         return FAILURE;
     return SUCCESS;

@@ -18,7 +18,7 @@ int reg_handler(char *param, args_t *node)
         return FAILURE;
     if ((register_nb = my_getnbr(param + 1)) <= 0 || register_nb > 16)
         return FAILURE;
-    node->arg = my_strdup(param);
+    node->arg = my_strdup(param + 1);
     node->type = T_REG;
     return SUCCESS;
 }
