@@ -53,6 +53,7 @@ typedef char name_t;
 typedef char comment_t;
 typedef char label_t;
 typedef unsigned char nb_t;
+typedef unsigned int u_int;
 
 typedef enum opcode_s {
     LIVE = 1,
@@ -100,18 +101,12 @@ typedef struct opnode_s {
     struct opnode_s *next;
 } opnode_t;
 
-typedef struct basics_s {
-    name_t *name;
-    comment_t *comment;
-} basics_t;
-
 typedef struct infos_s {
     header_t header;
     char **file;
     char *output_filename;
     char *input_name;
     FILE *fd;
-    basics_t basics;
     opnode_t *head;
     unsigned int size;
 } infos_t;

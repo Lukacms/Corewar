@@ -44,7 +44,6 @@ int display_help(int status, char *filepath);
 
 // lexer
 int lexer(infos_t *infos);
-int get_basics(infos_t *infos, basics_t *bases);
 
 // parser
 int parser(infos_t *infos);
@@ -61,10 +60,10 @@ int reg_dir_handler(char *param, args_t *node);
 int ind_dir_handler(char *param, args_t *node);
 int reg_ind_handler(char *param, args_t *node);
 int reg_dir_ind_handler(char *param, args_t *node);
-int check_param_pos(char **param, op_t op, u_int i);
-int is_label(char *str);
 
 // more generic functions
 int array_size(char **array);
+int check_param_pos(char **param, op_t op, u_int i);
+int is_label(char *str);
 
 #endif /* !LEXER_PARSER_H_ */
