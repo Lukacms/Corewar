@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** create_header
+** Corewar
 ** File description:
 ** create_header
 */

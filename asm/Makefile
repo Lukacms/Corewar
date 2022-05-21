@@ -29,7 +29,11 @@ SRC_PARSER	=	src/parser/parser.c	\
 		src/parser/is_label.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
+				src/compile/compile_line.c	\
 				src/compile/create_header.c	\
+				src/compile/params/compile_direct.c	\
+				src/compile/params/compile_indirect.c	\
+				src/compile/params/compile_register.c	\
 
 SRC_UTILS	=	src/utils/my_strcmp_insensitive.c	\
 				src/utils/load_file.c	\
