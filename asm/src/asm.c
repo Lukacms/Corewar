@@ -43,7 +43,9 @@ static int analyse_file(infos_t *infos)
         return FAILURE;
     if (parser(infos) != SUCCESS)
         return FAILURE;
-    return compile(infos);
+    if (compile(infos) != SUCCESS)
+        return FAILURE;
+    return SUCCESS;
 }
 
 int launch(int argc, char * const argv[])

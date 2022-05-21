@@ -44,7 +44,6 @@ int display_help(int status, char *filepath);
 
 // lexer
 int lexer(infos_t *infos);
-int get_basics(infos_t *infos, basics_t *bases);
 
 // parser
 int parser(infos_t *infos);
