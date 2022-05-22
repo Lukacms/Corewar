@@ -12,7 +12,7 @@ int launch(int argc, char * const argv[])
 {
     corewar_t *corewar = create_vm();
 
-    if (!corewar)
+    if (!corewar || argc < 2)
         return FAILURE;
     corewar->params = malloc(sizeof(parameters_t));
     if (check_parameters(argc, argv) != SUCCESS || !corewar->params)
@@ -20,7 +20,10 @@ int launch(int argc, char * const argv[])
     if (generate_warriors(corewar, argc, argv) == FAILURE
         || set_warriors_in_mem_loop(corewar) == FAILURE)
         return FAILURE;
-    if (battlefield(corewar) != SUCCESS)
+    if (battlefield(corewar) != SUCCESS) {
+        free_corewar(corewar);
         return FAILURE;
+    }
+    free_corewar(corewar);
     return SUCCESS;
 }

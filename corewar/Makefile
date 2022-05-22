@@ -17,6 +17,7 @@ SRC	=	src/corewar.c	\
 		src/instrution/live.c	\
 		src/instrution/fork.c	\
 		src/instrution/zjump.c	\
+		src/free/free_corewar.c	\
 		src/create_vm/create_vm.c	\
 		src/misc/fill_registers.c	\
 		src/misc/get_len_of_name.c	\

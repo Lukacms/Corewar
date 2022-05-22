@@ -16,7 +16,7 @@ int dump_memory(corewar_t *corewar)
 
     if (!corewar)
         return FAILURE;
-    /*for (; count < MEM_SIZE; count += 1, index += 1) {
+    for (; count < MEM_SIZE; count += 1, index += 1) {
         if (index > 32) {
             index = 0;
             my_printf("\n");
@@ -28,9 +28,6 @@ int dump_memory(corewar_t *corewar)
         } else
             my_printf(" %x", corewar->memory[count]);
     }
-    my_printf("\n"); */
-    for (; count < MEM_SIZE; count += 1, index += 1) {
-        my_printf("%c", corewar->memory[index]);
-    }
+    my_printf("\n");
     return SUCCESS;
 }

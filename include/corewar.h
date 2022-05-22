@@ -65,4 +65,6 @@ int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior);
 
 int dump_memory(corewar_t *corewar);
 
+int free_corewar(corewar_t *corewar);
+
 #endif /* !COREWAR_H_ */
