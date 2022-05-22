@@ -76,7 +76,6 @@ typedef struct instructions_s {
     int (*ptr)(warrior_t *warrior, corewar_t *corewar);
 } instructions_t;
 
-
 typedef struct arguments_s {
     int t_argrs[3];
     unsigned char reg[3];
