@@ -12,7 +12,7 @@
 
 int battlefield(corewar_t *corewar)
 {
-    while (true) {
+    while (corewar->nbr_cycles < 10000) {
         if (launch_which_instruction(corewar) != SUCCESS)
             return FAILURE;
         if (corewar->dump_cycles == corewar->nbr_cycles)
