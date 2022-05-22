@@ -59,5 +59,5 @@ int parser(infos_t *infos)
         if (add_opnode(infos, infos->file[i], i + 1) != SUCCESS)
             return FAILURE;
     }
-    return SUCCESS;
+    return check_if_index(infos);
 }

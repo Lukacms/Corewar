@@ -19,3 +19,11 @@ Test(launch, full_valid_test)
 
     cr_assert_eq(launch(argc, argv), SUCCESS);
 }
+
+Test(launch, full_valid_test_but_longer)
+{
+    char * const argv[] = {"hehe", "../tests/assets/src/pdd.s"};
+    int argc = 2;
+
+    cr_assert_eq(launch(argc, argv), SUCCESS);
+}

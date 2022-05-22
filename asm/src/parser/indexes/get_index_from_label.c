@@ -14,7 +14,7 @@ int get_index_from_label(char *label, infos_t *infos)
     int size = 0;
     opnode_t *node = NULL;
 
-    if (!infos || !label)
+    if (!infos || !label || !(node = infos->head))
         return 0;
     for (u_int i = 0; i < infos->size; i++) {
         if (node->fun_name && my_strcmp(label, node->fun_name) == SUCCESS)
