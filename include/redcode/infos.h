@@ -8,6 +8,7 @@
 #ifndef INFOS_H_
     #define INFOS_H_
 
+    #include <stdbool.h>
     #include <stdio.h>
 
     #define IDX_MOD 512 // modulo of the index <
@@ -84,17 +85,20 @@ typedef struct op_s {
     opcode_t cmd;
     int nbr_cycles;
     char *comment;
+    bool print_params;
 } op_t;
 
 typedef struct args_s {
     char *arg;
     label_t type;
+    bool is_lab;
     struct args_s *prev;
     struct args_s *next;
 } args_t;
 
 typedef struct opnode_s {
     opcode_t type;
+    bool params_type;
     args_t *head;
     unsigned char size;
     char *fun_name;

@@ -5,33 +5,34 @@
 ** infos_in_cmd_node
 */
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include "redcode.h"
 #include "my.h"
 
 static const op_t op[] = {
-    {"live", 1, {T_DIR}, LIVE, 10, "alive"},
-    {"ld", 2, {T_DIR | T_IND, T_REG}, LD, 5, "load"},
-    {"st", 2, {T_REG, T_IND | T_REG}, ST, 5, "store"},
-    {"add", 3, {T_REG, T_REG, T_REG}, ADD, 10, "addition"},
-    {"sub", 3, {T_REG, T_REG, T_REG}, SUB, 10, "soustraction"},
+    {"live", 1, {T_DIR}, LIVE, 10, "alive", false},
+    {"ld", 2, {T_DIR | T_IND, T_REG}, LD, 5, "load", true},
+    {"st", 2, {T_REG, T_IND | T_REG}, ST, 5, "store", true},
+    {"add", 3, {T_REG, T_REG, T_REG}, ADD, 10, "addition", true},
+    {"sub", 3, {T_REG, T_REG, T_REG}, SUB, 10, "soustraction", true},
     {"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, AND, 6,
-    "et (and  r1, r2, r3   r1&r2 -> r3"},
+    "et (and  r1, r2, r3   r1&r2 -> r3", true},
     {"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, OR, 6,
-    "ou  (or   r1, r2, r3   r1 | r2 -> r3"},
+    "ou  (or   r1, r2, r3   r1 | r2 -> r3", true},
     {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, XOR, 6,
-    "ou (xor  r1, r2, r3   r1^r2 -> r3"},
-    {"zjmp", 1, {T_DIR}, ZJUMP, 20, "jump if zero"},
+    "ou (xor  r1, r2, r3   r1^r2 -> r3", true},
+    {"zjmp", 1, {T_DIR}, ZJUMP, 20, "jump if zero", false},
     {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, LDI, 25,
-    "load index"},
+    "load index", true},
     {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, STI, 25,
-    "store index"},
-    {"fork", 1, {T_DIR}, FORK, 800, "fork"},
-    {"lld", 2, {T_DIR | T_IND, T_REG}, LLD, 10, "long load"},
+    "store index", true},
+    {"fork", 1, {T_DIR}, FORK, 800, "fork", false},
+    {"lld", 2, {T_DIR | T_IND, T_REG}, LLD, 10, "long load", true},
     {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, LLDI, 50,
-    "long load index"},
-    {"lfork", 1, {T_DIR}, LFORK, 1000, "long fork"},
-    {"aff", 1, {T_REG}, AFF, 2, "aff"},
+    "long load index", true},
+    {"lfork", 1, {T_DIR}, LFORK, 1000, "long fork", false},
+    {"aff", 1, {T_REG}, AFF, 2, "aff", true},
     {0}
 };
 
@@ -45,6 +46,7 @@ static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
         return print_error(PARSER_ERR_NBARG, y, FAILURE);
     }
     node->type = op[i].cmd;
+    node->params_type = op[i].print_params;
     node->cycle = op[i].nbr_cycles;
     return get_params(node, op[i], temp_instruction);
 }
