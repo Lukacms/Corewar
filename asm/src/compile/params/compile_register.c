@@ -11,7 +11,7 @@
 
 int compile_register(args_t *param, FILE *fd)
 {
-    char reg = 0x0;
+    unsigned char reg = 0x0;
 
     if (!param || !fd)
         return FAILURE;

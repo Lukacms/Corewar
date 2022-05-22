@@ -30,6 +30,7 @@ int my_strcmp_insensitive(const char *s1, const char *s2);
 char *load_file(char *filepath);
 char **str_sep_to_array(char *str, char sep);
 int reverse_int_bytes(int to_reverse);
+int print_reversed_bytes(int to_reverse, FILE *fd, int complete_byte);
 
 /* Headers function */
 

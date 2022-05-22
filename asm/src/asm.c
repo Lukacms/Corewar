@@ -16,10 +16,10 @@ char *get_output_filename(char *input_filename)
 
     if (!input_filename)
         return NULL;
-    parse_path = str_sep_to_array(input_filename, '/');
-    if (!parse_path)
+    if (!(parse_path = str_sep_to_array(input_filename, '/')))
         return NULL;
-    size = array_size(parse_path);
+    if ((size = array_size(parse_path)) <= 0)
+        return NULL;
     temp = my_strndup(parse_path[size - 1],
     my_strlen(parse_path[size - 1]) - 2);
     my_strcpy(temp + my_strlen(temp), ".cor");

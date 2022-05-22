@@ -10,9 +10,9 @@
 #include "redcode.h"
 
 static const param_type_handler_s compile_params[] = {
-    {.type = T_REG, .handler = &compile_direct},
-    {.type = T_DIR, .handler = &compile_indirect},
-    {.type = T_IND, .handler = &compile_register},
+    {.type = T_DIR, .handler = &compile_direct},
+    {.type = T_IND, .handler = &compile_indirect},
+    {.type = T_REG, .handler = &compile_register},
     {0}
 };
 

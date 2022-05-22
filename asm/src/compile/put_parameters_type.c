@@ -12,6 +12,7 @@
 static const param_type_handler_s compile_params[] = {
     {.type = T_REG, .bit = 0b01},
     {.type = T_DIR, .bit = 0b10},
+    {.type = T_LAB, .bit = 0b10},
     {.type = T_IND, .bit = 0b11},
     {0}
 };
