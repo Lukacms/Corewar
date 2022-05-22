@@ -15,7 +15,7 @@ static int free_list(corewar_t *corewar)
     for (u_int i = 0; i < corewar->warrior_list.nbr_of_warriors; i += 1) {
         if (!tmp->save || !tmp->reg || !tmp->warrior_code
             || !tmp->filename || !tmp->name)
-                return FAILURE;
+            return FAILURE;
         free(tmp->save);
         free(tmp->reg);
         free(tmp->filename);

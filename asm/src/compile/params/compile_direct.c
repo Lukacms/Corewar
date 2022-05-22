@@ -16,6 +16,6 @@ int compile_direct(args_t *param, FILE *fd)
     if (param->is_lab)
         return SUCCESS;
     dir |= my_getnbr(param->arg);
-    fwrite(&dir, DIR_SIZE, ONEARG, fd);
+    print_reversed_bytes(dir, fd, 24);
     return SUCCESS;
 }

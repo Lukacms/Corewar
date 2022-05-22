@@ -35,6 +35,5 @@ int set_warriors_in_mem_loop(corewar_t *corewar)
         set_warriors_in_mem(corewar, tmp);
         tmp = tmp->next;
     }
-    int i = 0;
     return SUCCESS;
 }

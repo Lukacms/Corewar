@@ -7,6 +7,8 @@
 
 SRC	=	src/asm.c	\
 		src/help/display_help.c	\
+		src/destroy/free_instructions.c	\
+		src/destroy/free_collected_infos.c	\
 
 SRC_ERRORS	=	src/errors/check_args.c	\
 				src/errors/print_error.c	\

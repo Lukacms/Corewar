@@ -30,5 +30,6 @@ int compile(infos_t *infos)
         return FAILURE;
     if (compile_instructions(infos) != SUCCESS)
         return FAILURE;
+    free_collected_infos(infos);
     return SUCCESS;
 }

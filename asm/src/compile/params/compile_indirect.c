@@ -17,6 +17,6 @@ int compile_indirect(args_t *param, FILE *fd)
     if (param->is_lab)
         return SUCCESS;
     ind |= my_getnbr(param->arg);
-    fwrite(&ind, IND_SIZE, ONEARG, fd);
+    print_reversed_bytes(ind, fd, 8);
     return SUCCESS;
 }

@@ -5,7 +5,19 @@
 ** reverse_int_bytes
 */
 
+#include <stdio.h>
 #include "redcode.h"
+
+int print_reversed_bytes(int to_reverse, FILE *fd, int complete_byte)
+{
+    unsigned char tmp = 0;
+
+    for (int i = complete_byte; i >= 0; i -= 8) {
+        tmp = (to_reverse >> i);
+        fwrite(&tmp, ONEARG, 1, fd);
+    }
+    return SUCCESS;
+}
 
 int reverse_int_bytes(int to_reverse)
 {

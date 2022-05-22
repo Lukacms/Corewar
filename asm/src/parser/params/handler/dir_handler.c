@@ -20,8 +20,10 @@ int dir_handler(char *param, args_t *node)
     if (param[0] != DIRECT_CHAR)
         return FAILURE;
     node->type = T_DIR;
-    if (param[1] == LABEL_CHAR)
+    if (param[1] == LABEL_CHAR) {
         node->is_lab = true;
+        node->type = T_LAB;
+    }
     node->arg = my_strdup(param + ((node->is_lab) ? 2 : 1));
     return SUCCESS;
 }

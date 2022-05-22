@@ -10,8 +10,11 @@
 
 int compile_label(args_t *param, FILE *fd)
 {
+    int offset = 0x0;
+
     if (!param || !fd)
         return FAILURE;
-    fwrite(&param->offset, IND_SIZE, ONEARG, fd);
+    offset |= param->offset;
+    print_reversed_bytes(offset, fd, 8);
     return SUCCESS;
 }
