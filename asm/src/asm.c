@@ -10,23 +10,21 @@
 
 char *get_output_filename(char *input_filename)
 {
+    char **parse_path = NULL;
+    int size = 0;
     char *temp = NULL;
-    char *filename = NULL;
 
     if (!input_filename)
         return NULL;
-    filename =
-        malloc(sizeof(char) * (PROG_NAME_LENGTH + PROG_EXTENSION_LENGTH));
-    if (!filename)
+    parse_path = str_sep_to_array(input_filename, '/');
+    if (!parse_path)
         return NULL;
-    temp = my_strndup(input_filename,
-        my_strlen(input_filename) - my_strlen(input_filename - 3));
-    my_strcpy(filename, temp);
-    my_strcpy(filename + my_strlen(temp), ".cor");
-    for (int i = my_strlen(filename); i < PROG_NAME_LENGTH; i++)
-        filename[i] = '\0';
-    free(temp);
-    return filename;
+    size = array_size(parse_path);
+    temp = my_strndup(parse_path[size - 1],
+    my_strlen(parse_path[size - 1]) - 2);
+    my_strcpy(temp + my_strlen(temp), ".cor");
+    free_array((void **)parse_path);
+    return temp;
 }
 
 char *get_output_filename_no_ext(char *output_filename)
@@ -46,7 +44,9 @@ static int analyse_file(infos_t *infos)
         return FAILURE;
     if (parser(infos) != SUCCESS)
         return FAILURE;
-    return compile(infos);
+    if (compile(infos) != SUCCESS)
+        return FAILURE;
+    return SUCCESS;
 }
 
 int launch(int argc, char * const argv[])

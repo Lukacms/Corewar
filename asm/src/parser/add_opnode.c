@@ -29,7 +29,6 @@ static void put_node_in_list(opnode_t *node, infos_t *infos)
         infos->head->prev->next = node;
         infos->head->prev = node;
     }
-    infos->size += 1;
 }
 
 int add_opnode(infos_t *infos, char *line, int y)
