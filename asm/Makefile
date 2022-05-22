@@ -57,7 +57,10 @@ SRC_MAIN	=	src/main.c
 OBJ_MAIN	=	$(SRC_MAIN:.c=.o)
 
 SRC_TESTS	=	../tests/asm/tests_args.c	\
-				../tests/asm/tests_files.c
+				../tests/asm/tests_help.c	\
+				../tests/asm/tests_files.c	\
+				../tests/asm/tests_errors.c	\
+				../tests/asm/integration_tests.c	\
 
 OBJ_TESTS	=	$(SRC_TESTS:.c=.o)
 

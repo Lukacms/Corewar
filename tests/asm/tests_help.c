@@ -6,7 +6,7 @@
 */
 
 #define FALSEHELP "tests/assets/falsehelp.txt"
-#define STDOUT_STR "oui"
+#define STDOUT_STR "oui\n"
 #define NONEXISTING "nope"
 #define FALSE_ERROR_CODE 157
 
@@ -32,6 +32,7 @@ Test(display_help, fake_file)
 
 Test(display_help, good_file, .init=redirect_all_std)
 {
-    cr_assert_eq(display_help(SUCCESS, "../tests/assets/falsehelp.txt"), SUCCESS);
-    cr_assert_stdout_eq_str("oui\n");
+    fflush(stdout);
+    cr_assert_eq(display_help(SUCCESS, "../tests/assets/help/falsehelp.txt"), SUCCESS);
+    cr_assert_stdout_eq_str(STDOUT_STR);
 }
