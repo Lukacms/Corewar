@@ -14,6 +14,8 @@ int launch(int argc, char * const argv[])
 
     if (!corewar || argc < 2)
         return FAILURE;
+    if (argv[1] && my_strcmp(argv[1], "-h") == 0)
+        return display_help(SUCCESS, COREWAR_HELP);
     corewar->params = malloc(sizeof(parameters_t));
     if (check_parameters(argc, argv) != SUCCESS || !corewar->params)
         return FAILURE;

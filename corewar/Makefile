@@ -25,6 +25,7 @@ SRC	=	src/corewar.c	\
 		src/misc/get_size_of_file.c	\
 		src/dump_memory/dump_memory.c	\
 		src/create_vm/create_warrior.c	\
+		../asm/src/help/display_help.c	\
 		src/warriors/generate_warriors.c	\
 		src/instrution/which_instruction.c	\
 		src/place_warriors/set_warriors_in_mem.c	\

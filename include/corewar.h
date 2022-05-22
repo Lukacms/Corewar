@@ -10,6 +10,7 @@
 
     #define SUCCESS 0
     #define FAILURE 84
+    #define COREWAR_HELP "./assets/corewar_help.txt"
 
     #include "corewar/infos.h"
     #include "corewar/struct.h"
@@ -66,5 +67,7 @@ int set_warriors_in_mem(corewar_t *corewar, warrior_t *warrior);
 int dump_memory(corewar_t *corewar);
 
 int free_corewar(corewar_t *corewar);
+
+int display_help(int status, char *filepath);
 
 #endif /* !COREWAR_H_ */
