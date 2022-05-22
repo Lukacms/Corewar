@@ -78,7 +78,7 @@ typedef struct instructions_s {
 
 
 typedef struct arguments_s {
-    int *t_argrs;
+    int t_argrs[3];
     unsigned char reg[3];
     unsigned char ind[3];
     unsigned char dir[3];
