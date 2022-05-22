@@ -32,8 +32,10 @@ int compile_line(opnode_t *line, FILE *fd)
     int status = SUCCESS;
     char cmd = 0x0;
 
-    if (!line || !fd || !(param = line->head))
+    if (!line || !fd)
         return FAILURE;
+    if (!(param = line->head))
+        return SUCCESS;
     cmd |= line->type;
     fwrite(&cmd, ONEARG, 1, fd);
     status |= put_parameters_type(line, fd);
