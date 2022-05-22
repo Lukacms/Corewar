@@ -36,7 +36,7 @@ enough instructions\n"
     #define PARSER_ERR_REG "parser error; param is not a register\n"
     #define PARSER_ERR_LAB "parser error; param is not a label\n"
 
-    #define SEPARATOR "\t"
+    #define SEPARATOR " \t"
     #define NAME ".name"
     #define COMMENT ".comment"
 
