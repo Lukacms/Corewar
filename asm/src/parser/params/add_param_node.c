@@ -5,14 +5,16 @@
 ** add_param_node
 */
 
-#include <sys/types.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <sys/types.h>
 #include "redcode.h"
 
 static void init_node(args_t *node)
 {
     node->arg = NULL;
     node->type = 0;
+    node->is_lab = false;
     node->prev = node;
     node->next = node;
 }

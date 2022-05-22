@@ -5,6 +5,7 @@
 ** dir_handler
 */
 
+#include <stdbool.h>
 #include "redcode.h"
 #include "my.h"
 
@@ -20,7 +21,7 @@ int dir_handler(char *param, args_t *node)
         return FAILURE;
     node->type = T_DIR;
     if (param[1] == LABEL_CHAR)
-        node->type = T_LAB;
-    node->arg = my_strdup(param + ((node->type == T_DIR) ? 1 : 2));
+        node->is_lab = true;
+    node->arg = my_strdup(param + ((node->is_lab) ? 2 : 1));
     return SUCCESS;
 }

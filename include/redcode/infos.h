@@ -8,6 +8,7 @@
 #ifndef INFOS_H_
     #define INFOS_H_
 
+    #include <stdbool.h>
     #include <stdio.h>
 
     #define IDX_MOD 512 // modulo of the index <
@@ -31,6 +32,8 @@
     #define T_IND 4 // see op.h
     #define T_LAB 8 // LABEL
 
+    #define ONEARG 1
+    #define REG_TRUE_SIZE 1
     #define IND_SIZE 2
     #define DIR_SIZE 4
     #define REG_SIZE DIR_SIZE
@@ -53,6 +56,7 @@ typedef char name_t;
 typedef char comment_t;
 typedef char label_t;
 typedef unsigned char nb_t;
+typedef unsigned int u_int;
 
 typedef enum opcode_s {
     LIVE = 1,
@@ -81,17 +85,20 @@ typedef struct op_s {
     opcode_t cmd;
     int nbr_cycles;
     char *comment;
+    bool print_params;
 } op_t;
 
 typedef struct args_s {
     char *arg;
     label_t type;
+    bool is_lab;
     struct args_s *prev;
     struct args_s *next;
 } args_t;
 
 typedef struct opnode_s {
     opcode_t type;
+    bool params_type;
     args_t *head;
     unsigned char size;
     char *fun_name;
@@ -107,6 +114,7 @@ typedef struct infos_s {
     char *input_name;
     FILE *fd;
     opnode_t *head;
+    unsigned int size;
 } infos_t;
 
 typedef int (*type_handler_t)(char *param, args_t *node);

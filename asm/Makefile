@@ -29,8 +29,12 @@ SRC_PARSER	=	src/parser/parser.c	\
 		src/parser/is_label.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
-				src/compile/compile_collected_infos.c	\
+				src/compile/compile_line.c	\
 				src/compile/create_header.c	\
+				src/compile/put_parameters_type.c	\
+				src/compile/params/compile_direct.c	\
+				src/compile/params/compile_indirect.c	\
+				src/compile/params/compile_register.c	\
 
 SRC_UTILS	=	src/utils/my_strcmp_insensitive.c	\
 				src/utils/load_file.c	\
@@ -61,7 +65,7 @@ LIBMY	=	../lib/libmy.a
 
 CC	=	gcc
 
-override CFLAGS	=	-W -Wall -Wextra -Wpedantic
+override CFLAGS	=	-W -Wall -Wextra -Wpedantic	
 
 override CPPFLAGS	=	-I./../include
 

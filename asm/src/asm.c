@@ -20,7 +20,8 @@ char *get_output_filename(char *input_filename)
     if (!parse_path)
         return NULL;
     size = array_size(parse_path);
-    temp = my_strndup(parse_path[size - 1], my_strlen(parse_path[size - 1]) - 2);
+    temp = my_strndup(parse_path[size - 1],
+    my_strlen(parse_path[size - 1]) - 2);
     my_strcpy(temp + my_strlen(temp), ".cor");
     free_array((void **)parse_path);
     return temp;
@@ -59,7 +60,7 @@ int launch(int argc, char * const argv[])
     infos.input_name = my_strdup(argv[1]);
     if (!(infos.output_filename = get_output_filename(infos.input_name)))
         return FAILURE;
-    if (!(infos.fd = fopen(infos.output_filename, "w")))
+    if (!(infos.fd = fopen(infos.output_filename, "w+")))
         return FAILURE;
     return analyse_file(&infos);
 }

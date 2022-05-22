@@ -30,17 +30,16 @@ static int give_id_and_adress(warrior_t *warrior, corewar_t *corewar)
     return SUCCESS;
 }
 
-static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar,
-char *byte_file)
+static int give_warrior_dna(warrior_t *warrior, corewar_t *corewar, char *byte)
 {
     char *warrior_code = {0};
     int len_name = {0};
 
-    if (!warrior || !byte_file)
+    if (!warrior || !byte)
         return FAILURE;
-    warrior_code = read_file(byte_file);
+    warrior_code = read_file(byte);
     warrior->reg = malloc(sizeof(int) * REG_NUMBER);
-    warrior->filename = my_strdup(byte_file);
+    warrior->filename = my_strdup(byte);
     warrior->size = get_size_of_file(warrior->filename);
     if (!warrior_code || !warrior->reg)
         return FAILURE;
