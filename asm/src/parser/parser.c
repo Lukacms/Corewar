@@ -20,15 +20,15 @@ static int init_header(infos_t *infos, char **file)
 {
     char **name_parser = NULL;
     char **comment_parser = NULL;
+    int i = 0;
 
-    if (!file || !(*file))
+    if (!file || !(*file) || array_size(file) <= 2)
         return FAILURE;
-    if (array_size(file) <= 2)
-        return FAILURE;
-    name_parser = str_to_array_choice(file[0], "\"");
+    for (; file[i] && is_comment(file[i][0]); i++);
+    name_parser = str_to_array_choice(file[i], "\"");
     if (!name_parser || !(*name_parser) || !name_parser[1])
         return FAILURE;
-    comment_parser = str_to_array_choice(file[1], "\"");
+    comment_parser = str_to_array_choice(file[i + 1], "\"");
     if (!comment_parser || !(*comment_parser) || !comment_parser[1])
         return FAILURE;
     if (my_strlen(name_parser[1]) > PROG_NAME_LENGTH
@@ -42,6 +42,7 @@ static int init_header(infos_t *infos, char **file)
 int parser(infos_t *infos)
 {
     int size = 0;
+    unsigned int i = 0;
 
     if (!infos || !infos->file)
         return FAILURE;
@@ -51,7 +52,8 @@ int parser(infos_t *infos)
         return FAILURE;
     if (init_header(infos, infos->file) == FAILURE)
         return FAILURE;
-    for (unsigned int i = 2; infos->file[i]; i += 1) {
+    for (; infos->file[i] && is_comment(infos->file[i][0]); i++);
+    for (i += 2; infos->file[i]; i += 1) {
         if (is_comment(infos->file[i][0]))
             continue;
         if (add_opnode(infos, infos->file[i], i + 1) != SUCCESS)

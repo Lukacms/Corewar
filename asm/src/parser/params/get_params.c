@@ -19,6 +19,5 @@ int get_params(opnode_t *opnode, op_t op, char **args)
             return FAILURE;
     }
     opnode->size = op.nbr_args;
-    free_array((void **)args);
     return SUCCESS;
 }

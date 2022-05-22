@@ -44,10 +44,8 @@ static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
     char **move_array = temp_instruction + 1;
     int size = array_size(move_array);
 
-    if (size != op[i].nbr_args) {
-        free_array((void **)temp_instruction);
+    if (size != op[i].nbr_args)
         return print_error(PARSER_ERR_NBARG, y, FAILURE);
-    }
     node->type = op[i].cmd;
     node->params_type = op[i].print_params;
     node->cycle = op[i].nbr_cycles;
@@ -56,18 +54,12 @@ static int check_opargs(char **temp_instruction, opnode_t *node, int i, int y)
 
 static int get_optype(opnode_t *node, char **line, int y)
 {
-    char **temp_instruction = NULL;
-
     if (!node || !line || !(*line))
         return FAILURE;
-    temp_instruction = str_to_array_choice(line[0], " ");
-    if (!temp_instruction)
-        return FAILURE;
     for (unsigned int i = 0; op[i].mnemonique; i += 1) {
-        if (my_strcmp(op[i].mnemonique, temp_instruction[0]) == SUCCESS)
-            return check_opargs(temp_instruction, node, i, y);
+        if (my_strcmp(op[i].mnemonique, line[0]) == SUCCESS)
+            return check_opargs(line, node, i, y);
     }
-    free_array((void **)temp_instruction);
     return print_error(PARSER_ERR_INST, y, FAILURE);
 }
 
