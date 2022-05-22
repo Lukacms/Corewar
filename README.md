@@ -35,7 +35,7 @@ At the root of the repository:
 ### Corewar part
 At the root of the repository:
 ```
-./corewar/corewar [.cor file] [-h] [options]
+./corewar [-h] [-dump nbr_cycle] [[-n prog_number] [-a load_address] prog_name] ...
 ```
 * The file must be a `.cor` file, and a binary file
 * `-h` to display infos about program.
