@@ -86,12 +86,14 @@ typedef struct op_s {
     int nbr_cycles;
     char *comment;
     bool print_params;
+    bool index[MAX_ARGS_NUMBER];
 } op_t;
 
 typedef struct args_s {
     char *arg;
     label_t type;
     bool is_lab;
+    int offset;
     struct args_s *prev;
     struct args_s *next;
 } args_t;

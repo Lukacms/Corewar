@@ -40,6 +40,8 @@ int add_opnode(infos_t *infos, char *line, int y)
     init_node(node);
     if (infos_in_opnode(line, node, y) != SUCCESS)
         return FAILURE;
+    infos->header.prog_size += count_node_size(node);
+    infos->size += 1;
     put_node_in_list(node, infos);
     return SUCCESS;
 }

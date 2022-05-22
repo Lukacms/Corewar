@@ -26,6 +26,8 @@ int compile(infos_t *infos)
 {
     if (!infos)
         return FAILURE;
+    if (create_header(infos) != SUCCESS)
+        return FAILURE;
     if (compile_instructions(infos) != SUCCESS)
         return FAILURE;
     return SUCCESS;

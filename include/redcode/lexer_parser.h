@@ -60,6 +60,8 @@ int reg_dir_handler(char *param, args_t *node);
 int ind_dir_handler(char *param, args_t *node);
 int reg_ind_handler(char *param, args_t *node);
 int reg_dir_ind_handler(char *param, args_t *node);
+int get_index_from_label(char *label, infos_t *infos);
+int check_if_index(infos_t *infos);
 
 // more generic functions
 int array_size(char **array);

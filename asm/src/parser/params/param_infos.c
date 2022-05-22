@@ -34,6 +34,8 @@ int param_infos(args_t *node, op_t op, char *arg, u_int index)
     }
     if (status != SUCCESS || check_param_pos(&node->arg, op, index))
         return print_error(PARSER_ERR_ARGTYPE, 0, FAILURE);
+    if (node->type != T_REG && op.index[index - 1])
+        node->is_lab = true;
     if (node->type == T_LAB)
         return is_label(node->arg);
     return SUCCESS;
