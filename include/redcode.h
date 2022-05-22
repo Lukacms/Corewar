@@ -33,7 +33,7 @@ int reverse_int_bytes(int to_reverse);
 
 /* Headers function */
 
-int create_header(FILE *fp, char *input_filename, int prog_size);
+int create_header(infos_t *infos);
 
 /* Filename management */
 

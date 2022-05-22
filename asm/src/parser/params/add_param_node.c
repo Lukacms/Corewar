@@ -14,6 +14,7 @@ static void init_node(args_t *node)
 {
     node->arg = NULL;
     node->type = 0;
+    node->offset = 0;
     node->is_lab = false;
     node->prev = node;
     node->next = node;
