@@ -49,4 +49,8 @@ int check_name_and_comment(char **file_lines);
 int check_args(char * const argv[]);
 int print_error(char *str, int i, int status);
 
+/* destroy collected infos */
+void free_collected_infos(infos_t *infos);
+void free_instructions(infos_t *infos);
+
 #endif /* !ASM_H_ */

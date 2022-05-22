@@ -18,24 +18,24 @@ static int is_comment(char c)
 
 static int init_header(infos_t *infos, char **file)
 {
-    char **name_parser = NULL;
-    char **comment_parser = NULL;
+    char **name = NULL;
+    char **comment = NULL;
     int i = 0;
 
     if (!file || !(*file) || array_size(file) <= 2)
         return FAILURE;
     for (; file[i] && is_comment(file[i][0]); i++);
-    name_parser = str_to_array_choice(file[i], "\"");
-    if (!name_parser || !(*name_parser) || !name_parser[1])
+    if (!(name = str_to_array_choice(file[i], "\"")) || !(*name) || !name[1])
         return FAILURE;
-    comment_parser = str_to_array_choice(file[i + 1], "\"");
-    if (!comment_parser || !(*comment_parser) || !comment_parser[1])
+    comment = str_to_array_choice(file[i + 1], "\"");
+    if (!comment || !(*comment) || !comment[1])
         return FAILURE;
-    if (my_strlen(name_parser[1]) > PROG_NAME_LENGTH
-        || my_strlen(comment_parser[1]) > COMMENT_LENGTH)
+    if (my_strlen(name[1]) > 128 || my_strlen(comment[1]) > 2048)
         return FAILURE;
-    my_strncpy(infos->header.prog_name, name_parser[1], PROG_NAME_LENGTH + 1);
-    my_strncpy(infos->header.comment, comment_parser[1], COMMENT_LENGTH+ 1);
+    my_strncpy(infos->header.prog_name, name[1], PROG_NAME_LENGTH + 1);
+    my_strncpy(infos->header.comment, comment[1], COMMENT_LENGTH+ 1);
+    free_array((void **)comment);
+    free_array((void **)name);
     return SUCCESS;
 }
 
