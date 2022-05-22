@@ -38,9 +38,9 @@ int create_header(FILE *fp, char *input_filename, int prog_size)
     char **file_lines = NULL;
     char *temp_file = NULL;
     header_t header;
+
     header.prog_size = reverse_int_bytes(prog_size) << 8;
     header.magic = reverse_int_bytes(COREWAR_EXEC_MAGIC) << 8;
-
     if (!fp || !input_filename)
         return FAILURE;
     temp_file = load_file(input_filename);
