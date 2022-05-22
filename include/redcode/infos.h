@@ -56,7 +56,6 @@ typedef char name_t;
 typedef char comment_t;
 typedef char label_t;
 typedef unsigned char nb_t;
-typedef unsigned int u_int;
 
 typedef enum opcode_s {
     LIVE = 1,
