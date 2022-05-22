@@ -60,7 +60,7 @@ int launch(int argc, char * const argv[])
     infos.input_name = my_strdup(argv[1]);
     if (!(infos.output_filename = get_output_filename(infos.input_name)))
         return FAILURE;
-    if (!(infos.fd = fopen(infos.output_filename, "w")))
+    if (!(infos.fd = fopen(infos.output_filename, "w+")))
         return FAILURE;
     return analyse_file(&infos);
 }

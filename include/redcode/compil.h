@@ -25,5 +25,6 @@ int compile_line(opnode_t *line, FILE *fd);
 int compile_direct(args_t *param, FILE *fd);
 int compile_indirect(args_t *param, FILE *fd);
 int compile_register(args_t *param, FILE *fd);
+int put_parameters_type(opnode_t *line, FILE *fd);
 
 #endif /* !COMPIL_H_ */
