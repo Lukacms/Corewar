@@ -7,13 +7,13 @@
 
 #include "corewar.h"
 
-static create_doppelganger(warrior_t *warrior, corewar_t *corewar, int index)
+static int create_doppelganger(warrior_t *warrior, corewar_t *corewar, int ind)
 {
     create_warrior(corewar, warrior->filename);
     if (!corewar->warrior_list.head->prev)
         return FAILURE;
     corewar->warrior_list.head->prev->pc = warrior->pc;
-    corewar->warrior_list.head->prev->instruction_address = index;
+    corewar->warrior_list.head->prev->instruction_address = ind;
     set_warriors_in_mem(corewar, corewar->warrior_list.head->prev);
     return SUCCESS;
 }
