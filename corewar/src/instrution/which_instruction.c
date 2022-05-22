@@ -10,21 +10,12 @@
 
 static const instructions_t instructions[] = {
     {0x01, &instruction_live},
-    {0x02, &instruction_ld},/*
-    {0x03, &st},*/
+    {0x02, &instruction_ld},
     {0x04, &instruction_add},
     {0x05, &instruction_sub},
-/*    {0x06, &and},
-    {0x07, &or},
-    {0x08, &xor},*/
-    {0x09, &instruction_zjump},/*
-    {0x0a, &ldi},
-    */{0x0b, &instruction_sti},
-    {0x0c, &instruction_fork},/*
-    {0x0d, &lld},
-    {0x0e, &lldi},
-    {0x0f, &lfork},
-    {0x10, &aff},*/
+    {0x09, &instruction_zjump},
+    {0x0b, &instruction_sti},
+    {0x0c, &instruction_fork},
     {0x00, NULL},
 };
 
