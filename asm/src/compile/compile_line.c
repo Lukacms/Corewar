@@ -18,6 +18,8 @@ static const param_type_handler_s compile_params[] = {
 
 static int compile_param(args_t *param, FILE *fd)
 {
+    if (param->is_lab == true)
+        return compile_label(param, fd);
     for (u_int i = 0; compile_params[i].handler; i += 1)
         if (compile_params[i].type == param->type)
             return compile_params[i].handler(param, fd);

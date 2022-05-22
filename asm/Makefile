@@ -28,11 +28,14 @@ SRC_PARSER	=	src/parser/parser.c	\
 				src/parser/params/handler/reg_handler.c	\
 				src/parser/params/handler/check_param_pos.c	\
 				src/parser/params/handler/combination_handler.c	\
+				src/parser/indexes/check_if_index.c	\
+				src/parser/indexes/get_index_from_label.c	\
 
 SRC_COMPILE	=	src/compile/compile.c	\
 				src/compile/compile_line.c	\
 				src/compile/create_header.c	\
 				src/compile/put_parameters_type.c	\
+				src/compile/params/compile_label.c	\
 				src/compile/params/compile_direct.c	\
 				src/compile/params/compile_indirect.c	\
 				src/compile/params/compile_register.c	\
@@ -66,7 +69,7 @@ LIBMY	=	../lib/libmy.a
 
 CC	=	gcc
 
-override CFLAGS	=	-W -Wall -Wextra -Wpedantic	
+override CFLAGS	=	-W -Wall -Wextra -Wpedantic
 
 override CPPFLAGS	=	-I./../include
 
