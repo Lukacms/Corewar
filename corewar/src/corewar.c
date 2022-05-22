@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "corewar.h"
+#include "my.h"
 
 int launch(int argc, char * const argv[])
 {
