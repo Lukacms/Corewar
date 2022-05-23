@@ -50,6 +50,8 @@ int create_header(infos_t *infos)
     }
     my_strncpy(infos->header.prog_name, file_lines[1], PROG_NAME_LENGTH + 2);
     my_strncpy(infos->header.comment, file_lines[3], COMMENT_LENGTH + 2);
+    if (!(infos->fd = fopen(infos->output_filename, "w+")))
+        return FAILURE;
     fwrite(&infos->header, sizeof(header_t), 1, infos->fd);
     free_header_elements(file_lines, temp_file);
     return SUCCESS;
